@@ -11,11 +11,16 @@ const PORT = parseInt(process.env.PORT || '3000', 10);
 const INDEX = path.join(__dirname, 'preview', 'index.html');
 const KAIRO_INDEX = path.join(__dirname, 'preview', 'kairo.html');
 const DOWNLOAD_INDEX = path.join(__dirname, 'preview', 'download.html');
+const PIXEL_POP_INDEX = path.join(__dirname, 'preview', 'pixel-pop.html');
 const DOWNLOADS = Object.freeze({
   '/download/kairo.mp4': path.join(ROOT, 'kairo-hyperframes.mp4'),
   '/download/kairo': path.join(ROOT, 'kairo-hyperframes.mp4'),
   '/download/kairo-720p.mp4': path.join(ROOT, 'kairo-hyperframes-720p.mp4'),
   '/download/kairo-720p': path.join(ROOT, 'kairo-hyperframes-720p.mp4'),
+  '/download/pixel-pop.mp4': path.join(ROOT, 'pixel-pop-hyperframes.mp4'),
+  '/download/pixel-pop': path.join(ROOT, 'pixel-pop-hyperframes.mp4'),
+  '/download/pixel-pop-720p.mp4': path.join(ROOT, 'pixel-pop-hyperframes-720p.mp4'),
+  '/download/pixel-pop-720p': path.join(ROOT, 'pixel-pop-hyperframes-720p.mp4'),
 });
 
 const MIME = {
@@ -45,10 +50,11 @@ const server = http.createServer((req, res) => {
   const downloadFile = DOWNLOADS[pathname];
   let file = pathname === '/download' ? DOWNLOAD_INDEX
             : downloadFile ? downloadFile
+            : pathname === '/pixel-pop' || pathname === '/pixel-pop.html' ? PIXEL_POP_INDEX
             : pathname === '/kairo' || pathname === '/kairo.html' ? KAIRO_INDEX
             : (pathname === '/' || pathname === '/index.html') ? INDEX
             : path.resolve(ROOT, '.' + pathname);
-  if (!file.startsWith(ROOT + path.sep) && file !== INDEX && file !== KAIRO_INDEX && file !== DOWNLOAD_INDEX) { res.writeHead(403).end('Forbidden'); return; }
+  if (!file.startsWith(ROOT + path.sep) && file !== INDEX && file !== KAIRO_INDEX && file !== DOWNLOAD_INDEX && file !== PIXEL_POP_INDEX) { res.writeHead(403).end('Forbidden'); return; }
 
   let stat;
   try { stat = fs.statSync(file); } catch (_) { res.writeHead(404, { 'Content-Type': 'text/plain' }).end('404 — fichier introuvable'); return; }

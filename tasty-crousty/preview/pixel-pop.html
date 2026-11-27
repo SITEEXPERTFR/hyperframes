@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+<title>Pixel Pop! — lecteur HyperFrames 6 s</title>
+<style>
+  *{box-sizing:border-box} body{margin:0;background:#fafaf9;color:#121211;font-family:Inter,system-ui,sans-serif;
+    background-image:radial-gradient(rgba(231,231,228,.55) 1px,transparent 1px);background-size:36px 36px}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 20px 60px}
+  header{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+  h1{font-size:clamp(28px,4vw,48px);margin:0;letter-spacing:-.04em} h1 span{color:#1f6b45}
+  .sub{color:#575752;font-size:14px}
+  video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#fafaf9;border-radius:16px;
+    border:1px solid rgba(18,18,17,.12);box-shadow:0 24px 70px rgba(18,18,17,.12)}
+  .bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:16px 0 12px}
+  button,.chip{font-family:Inter,system-ui,sans-serif;font-size:13px;font-weight:600;cursor:pointer;color:#121211;
+    background:#fff;border:1px solid rgba(18,18,17,.14);border-radius:999px;padding:9px 15px;transition:.18s;text-decoration:none}
+  button:hover,.chip:hover{border-color:#1f6b45;color:#1f6b45}
+  button.active{background:#1f6b45;border-color:#1f6b45;color:#fff;box-shadow:0 0 22px rgba(31,107,69,.25)}
+  button.son{background:#0ac26a;border-color:#0ac26a;color:#04120a}
+  h2{font-size:20px;margin:34px 0 14px;letter-spacing:.02em}
+  img.sheet{width:100%;display:block;border-radius:12px;border:1px solid rgba(18,18,17,.12)}
+  .links{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px}
+  .note{color:#575752;font-size:13px;line-height:1.6}
+  .note a{color:#1f6b45}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1><span>Pixel Pop!</span> — HyperFrames</h1>
+    <div class="sub">6,000 s · 60 fps · 1920×1080 · 360 frames · H.264 + AAC</div>
+  </header>
+  <video id="v" src="/pixel-pop-hyperframes.mp4?v=pp-1" poster="/tasty-crousty/stills/pixel-pop/poster.png?v=pp-1"
+         controls autoplay muted loop playsinline preload="auto"></video>
+  <div class="bar">
+    <span class="sub">Qualité :</span>
+    <button data-src="/pixel-pop-hyperframes.mp4?v=pp-1" class="active">1080p60 · 3,2 Mo</button>
+    <button data-src="/pixel-pop-hyperframes-720p.mp4?v=pp-1">720p60 · 0,8 Mo</button>
+    <button id="son" class="son">🔊 Activer le son</button>
+    <a id="dl" class="chip" href="/download/pixel-pop.mp4" download>⬇ Télécharger 1080p60</a>
+    <a class="chip" href="/download/pixel-pop-720p.mp4" download>⬇ 720p léger</a>
+    <a class="chip" href="/download">Page de téléchargement</a>
+  </div>
+  <p class="note">Assets réels Pixel Pop! embarqués localement ; voir <a href="/pixel-pop-hyperframes/assets/real/ASSETS.md">la provenance et la limite CDN</a>. Lecture automatique en muet : clique sur « Activer le son ».</p>
+  <h2>STORYBOARD — 12 INSTANTS</h2>
+  <img class="sheet" src="/tasty-crousty/stills/pixel-pop/contact-sheet.jpg?v=pp-1" alt="Storyboard Pixel Pop">
+  <div class="links">
+    <a class="chip" href="/pixel-pop-hyperframes/README.md" target="_blank">README du projet</a>
+    <a class="chip" href="/pixel-pop-hyperframes/ANIMATIONS.md" target="_blank">Timeline unique</a>
+    <a class="chip" href="/pixel-pop-hyperframes/index.html" target="_blank">Source HTML HyperFrames</a>
+    <a class="chip" href="/">Retour au lecteur complet</a>
+  </div>
+</div>
+<script>
+  const v=document.getElementById('v'), buttons=[...document.querySelectorAll('button[data-src]')], dl=document.getElementById('dl');
+  buttons.forEach(b=>b.addEventListener('click',()=>{
+    const at=v.currentTime, playing=!v.paused, muted=v.muted;
+    v.src=b.dataset.src;
+    dl.href=b.dataset.src.indexOf('720p')>=0 ? '/download/pixel-pop-720p.mp4' : '/download/pixel-pop.mp4';
+    buttons.forEach(x=>x.classList.toggle('active',x===b));
+    v.addEventListener('loadedmetadata',function once(){ try{v.currentTime=at}catch(_){} v.muted=muted; if(playing)v.play().catch(()=>{}); v.removeEventListener('loadedmetadata',once); });
+    v.load();
+  }));
+  document.getElementById('son').addEventListener('click',e=>{v.muted=false;v.volume=.9;v.play().catch(()=>{});e.target.textContent='🔊 Son activé'});
+  v.play().catch(()=>{});
+</script>
+</body>
+</html>

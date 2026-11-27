@@ -19,3 +19,8 @@ Le preview peut bloquer les téléchargements déclenchés depuis son iframe. Le
 - Rendu officiel : 1920×1080, 60 fps, 20,000 s, 1200 frames, H.264 + AAC
 
 Si un lien ouvre la vidéo au lieu de la télécharger : clic droit → « Enregistrer le lien sous… ».
+
+## Pixel Pop! — showcase 6 s
+- [Télécharger le MP4 1080p60 via GitHub](https://github.com/SITEEXPERTFR/hyperframes/raw/refs/heads/arena/9dec692a-hyperframes/pixel-pop-hyperframes.mp4)
+- [Télécharger la version 720p via GitHub](https://github.com/SITEEXPERTFR/hyperframes/raw/refs/heads/arena/9dec692a-hyperframes/pixel-pop-hyperframes-720p.mp4)
+- Depuis le preview : `/download/pixel-pop.mp4`, `/download/pixel-pop-720p.mp4`, lecteur dédié `/pixel-pop`
