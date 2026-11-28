@@ -1,0 +1,120 @@
+<template>
+<link rel="stylesheet" href="../assets/book.css" />
+<style>
+  #root{position:absolute;inset:0}
+  .pg .content{display:flex;flex-direction:column}
+  #s6-spread{position:absolute;left:130px;top:96px;width:1660px;height:888px}
+
+  #s6-h{font-size:58px;font-weight:800;letter-spacing:-.042em;line-height:1.02}
+  #s6-p{font-size:28px;line-height:1.4;color:#575752;margin-top:12px}
+
+  /* jarre de projet dessinée (verre + graduation + pièces) */
+  #s6-jar{position:relative;margin:16px auto 0;width:300px;height:370px;border-radius:26px 26px 30px 30px;
+    border:4px solid rgba(18,18,17,.16);background:rgba(255,255,255,.55);overflow:hidden;
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.8),0 24px 50px rgba(18,18,17,.10)}
+  #s6-water{position:absolute;left:0;right:0;bottom:0;height:8%;
+    background:linear-gradient(180deg,#d8f0e3,#0ac26a55)}
+  #s6-goal{position:absolute;left:14px;right:14px;top:16px;height:56px;border-radius:12px;background:#e8f6ee;
+    display:flex;align-items:center;justify-content:center;gap:10px;font-size:28px;font-weight:600;color:#1f6b45;z-index:4}
+  #s6-grad{position:absolute;right:10px;top:96px;bottom:26px;width:22px;z-index:3}
+  #s6-grad i{position:absolute;right:0;width:14px;height:3px;background:rgba(18,18,17,.18);border-radius:2px}
+  #s6-cap{left:0;top:96px;width:76px;height:38px;border-radius:8px;background:#fff;
+    border:1px solid #ecebe6;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:600;color:#8d8c85}
+  #s6-coinA,#s6-coinB,#s6-coinC{width:46px;height:46px;font-size:24px;position:absolute;z-index:5}
+
+  #s6-steps{margin-top:22px;width:100%}
+  #s6-steps .r{display:flex;align-items:center;gap:18px;padding:20px 0;border-bottom:1px solid #ecebe6}
+  #s6-steps .r .n{width:64px;font-size:28px;font-weight:600;color:#a9a8a1;letter-spacing:.08em}
+  #s6-steps .r .t{font-size:32px;font-weight:600;letter-spacing:-.02em}
+  #s6-ratio{margin-top:auto;padding-bottom:4px;text-align:center}
+  #s6-ratio .v{font-size:104px;font-weight:800;letter-spacing:-.055em;line-height:.92;color:#1f6b45}
+  #s6-ratio .k{font-size:28px;font-weight:600;letter-spacing:.14em;color:#a9a8a1;margin-top:8px}
+</style>
+
+<div id="root" data-composition-id="s6" data-width="1920" data-height="1080">
+  <div class="book-scene">
+    <div class="ground" data-layout-ignore="true"></div>
+    <div class="grain" data-layout-ignore="true"></div>
+
+    <div id="s6-clip-page" class="clip" data-start="0" data-duration="2.4" data-track-index="1" data-layout-allow-overflow>
+      <div class="stage">
+        <div id="s6-spread" class="spread">
+          <div class="pg left">
+            <div class="runhead"><span>Chapitre 03</span><span>Le projet</span></div>
+            <div class="hairline"></div>
+            <div class="content">
+              <div id="s6-h">Un objectif,<br>un cap.</div>
+              <div id="s6-p">Voir le projet se remplir rend l'épargne évidente.</div>
+              <div id="s6-steps">
+                <div class="r"><span class="n">01</span><span class="t">Je choisis le projet</span></div>
+                <div class="r"><span class="n">02</span><span class="t">Je mets de côté</span></div>
+                <div class="r"><span class="n">03</span><span class="t">Je vois le progrès</span></div>
+              </div>
+            </div>
+            <div class="pnum" data-layout-ignore="true">18</div>
+          </div>
+
+          <div class="pg right">
+            <div class="runhead"><span>Chapitre 03</span><span>La jarre</span></div>
+            <div class="hairline"></div>
+            <div class="content">
+              <div id="s6-jar">
+                <div id="s6-goal"><span style="width:10px;height:10px;border-radius:50%;background:#0ac26a;display:block" data-layout-ignore="true"></span>Mon projet</div>
+                <div id="s6-grad" data-layout-ignore="true">
+                  <i style="bottom:0%"></i><i style="bottom:20%"></i><i style="bottom:40%"></i>
+                  <i style="bottom:60%"></i><i style="bottom:80%"></i><i style="bottom:100%"></i>
+                </div>
+                <div id="s6-water" data-layout-ignore="true"></div>
+                <div id="s6-coinA" class="coin" data-layout-ignore="true">€</div>
+                <div id="s6-coinB" class="coin" data-layout-ignore="true">€</div>
+                <div id="s6-coinC" class="coin" data-layout-ignore="true">€</div>
+              </div>
+              <div id="s6-ratio">
+                <div class="v">72%</div>
+                <div class="k">DU PROJET</div>
+              </div>
+            </div>
+            <div class="pnum" data-layout-ignore="true">19</div>
+          </div>
+
+          <div class="gutter" data-layout-ignore="true"></div>
+          <div id="s6-turner" class="turner" data-layout-ignore="true"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var tl = gsap.timeline({ paused:true });
+
+  tl.set('#s6-turner',{rotateY:-80,transformPerspective:2400,transformOrigin:'left center'},0);
+  tl.fromTo('#s6-spread',{scale:.972,y:22},{scale:1,y:0,duration:.42,ease:'power3.out'},0);
+  tl.fromTo('#s6-turner',{rotateY:-80},{rotateY:0,duration:.52,ease:'power3.out'},0.02);
+  tl.to('#s6-turner',{opacity:0,duration:.14,ease:'power2.in'},0.52);
+
+  tl.fromTo('#s6-h',{opacity:.15,y:16},{opacity:1,y:0,duration:.42,ease:'power3.out'},0.06);
+  tl.fromTo('#s6-p',{opacity:0,y:10},{opacity:1,y:0,duration:.3,ease:'power3.out'},0.1);
+  tl.fromTo('#s6-steps .r',{opacity:0,x:-18},{opacity:1,x:0,duration:.34,stagger:.08,ease:'power3.out'},0.26);
+
+  tl.fromTo('#s6-jar',{opacity:.2,y:26,scale:.97},{opacity:1,y:0,scale:1,duration:.5,ease:'power3.out'},0.1);
+  tl.fromTo('#s6-goal',{opacity:0,y:-10},{opacity:1,y:0,duration:.32,ease:'power3.out'},0.24);
+  tl.fromTo('#s6-water',{height:'8%'},{height:'72%',duration:1.15,ease:'power2.out'},0.34);
+  tl.fromTo('#s6-ratio .v',{opacity:0,y:14},{opacity:1,y:0,duration:.4,ease:'power3.out'},0.86);
+  tl.fromTo('#s6-ratio .k',{opacity:0},{opacity:1,duration:.3,ease:'power2.out'},1.02);
+
+  /* pièces qui tombent dans la jarre */
+  var coins = [['#s6-coinA',0.52],['#s6-coinB',0.72],['#s6-coinC',0.92]];
+  coins.forEach(function(c){
+    gsap.set(c[0],{left:110,top:-60,opacity:0});
+    tl.fromTo(c[0],{y:-40,opacity:0,rotate:-40},{y:0,opacity:1,rotate:0,duration:.34,ease:'power2.in'},c[1]);
+    tl.to(c[0],{y:300,opacity:0,duration:.42,ease:'power2.in'},c[1]+0.16);
+  });
+
+  tl.to('#s6-spread',{scale:.985,y:-16,opacity:0,duration:.22,ease:'power3.in'},2.2);
+
+  window.__timelines['s6'] = tl;
+})();
+</script>
+</template>

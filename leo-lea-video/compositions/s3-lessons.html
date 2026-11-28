@@ -1,0 +1,106 @@
+<template>
+<link rel="stylesheet" href="../assets/book.css" />
+<style>
+  #root{position:absolute;inset:0}
+  #s3-spread{position:absolute;left:146px;top:96px;width:1628px;height:888px}
+
+  /* page gauche : éditorial */
+  #s3-sec{font-size:28px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#a9a8a1}
+  #s3-h{font-size:52px;line-height:1.02;font-weight:800;letter-spacing:-.042em;margin-top:12px}
+  #s3-p{font-size:28px;line-height:1.36;color:#575752;margin-top:14px;width:590px}
+  #s3-big{font-size:84px;font-weight:800;letter-spacing:-.055em;line-height:.9;color:#1f6b45;margin-top:18px}
+  #s3-bigk{font-size:28px;font-weight:600;letter-spacing:.04em;color:#a9a8a1;margin-top:10px;line-height:1.15}
+  #s3-quote2{font-size:32px;line-height:1.16;font-weight:800;letter-spacing:-.03em;margin-top:auto;padding-bottom:6px}
+  #s3-quote2 em{font-style:normal;color:#1f6b45}
+
+  /* page droite : les 10 leçons imprimées */
+  #s3-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;width:100%}
+  .lcard{position:relative;height:118px;padding:12px 14px;border-radius:12px;background:#fff;
+    border:1px solid #ecebe6;box-shadow:0 10px 22px rgba(18,18,17,.05);
+    display:flex;flex-direction:column;justify-content:space-between}
+  .lcard .n{font-size:28px;font-weight:800;letter-spacing:-.04em;color:#1f6b45;opacity:.85;line-height:1}
+  .lcard .t{font-size:28px;line-height:1.0;font-weight:600;letter-spacing:-.02em}
+  .lcard .tick{height:5px;width:30px;border-radius:99px;background:#ecebe6}
+  #s3-src{font-size:28px;font-weight:600;color:#a9a8a1;margin-top:12px;letter-spacing:.04em}
+</style>
+
+<div id="root" data-composition-id="s3" data-width="1920" data-height="1080">
+  <div class="book-scene">
+    <div class="ground" data-layout-ignore="true"></div>
+    <div class="grain" data-layout-ignore="true"></div>
+
+    <div id="s3-clip-page" class="clip" data-start="0" data-duration="3.6" data-track-index="1" data-layout-allow-overflow>
+      <div class="stage">
+        <div id="s3-spread" class="spread">
+
+          <div class="pg left">
+            <div class="runhead"><span>Sommaire</span><span>10 leçons</span></div>
+            <div class="hairline"></div>
+            <div class="content">
+              <div id="s3-sec">Partie 1</div>
+              <div id="s3-h">Dix histoires,<br>dix leçons.</div>
+              <div id="s3-p">Chaque chapitre règle une question d'argent concrète.</div>
+              <div id="s3-big">10</div>
+              <div id="s3-bigk">HISTOIRES · 10 DÉFIS</div>
+              <div id="s3-quote2">Pas de leçon de morale.<br><em>Des choix à faire.</em></div>
+            </div>
+            <div class="pnum" data-layout-ignore="true">04</div>
+          </div>
+
+          <div class="pg right">
+            <div class="runhead"><span>Ce que l'enfant apprend</span><span>Chapitre 01</span></div>
+            <div class="hairline"></div>
+            <div class="content">
+              <div id="s3-grid">
+                <div class="lcard"><div class="n">01</div><div class="t">Besoins<br>ou envies</div><div class="tick"></div></div>
+                <div class="lcard"><div class="n">02</div><div class="t">Tenir<br>un budget</div><div class="tick"></div></div>
+                <div class="lcard"><div class="n">03</div><div class="t">Épargner<br>sans effort</div><div class="tick"></div></div>
+                <div class="lcard"><div class="n">04</div><div class="t">Financer<br>un projet</div><div class="tick"></div></div>
+                <div class="lcard"><div class="n">05</div><div class="t">Comparer<br>les prix</div><div class="tick"></div></div>
+                <div class="lcard"><div class="n">06</div><div class="t">Éviter<br>l'impulsion</div><div class="tick"></div></div>
+                <div class="lcard"><div class="n">07</div><div class="t">La valeur<br>du travail</div><div class="tick"></div></div>
+                <div class="lcard"><div class="n">08</div><div class="t">Le<br>partage</div><div class="tick"></div></div>
+                <div class="lcard"><div class="n">09</div><div class="t">Réfléchir<br>avant</div><div class="tick"></div></div>
+                <div class="lcard"><div class="n">10</div><div class="t">Petits<br>défis</div><div class="tick"></div></div>
+              </div>
+              <div id="s3-src">10 histoires · 10 défis · 67 pages</div>
+            </div>
+            <div class="pnum" data-layout-ignore="true">05</div>
+          </div>
+
+          <div class="gutter" data-layout-ignore="true"></div>
+          <div class="curler" data-layout-ignore="true"></div>
+          <div id="s3-turner" class="turner" data-layout-ignore="true"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var tl = gsap.timeline({ paused:true });
+  var cards = Array.prototype.slice.call(document.querySelectorAll('#s3-grid .lcard'));
+
+  tl.set('#s3-turner',{rotateY:-80,transformPerspective:2400,transformOrigin:'left center'},0);
+  tl.fromTo('#s3-spread',{scale:.972,y:22},{scale:1,y:0,duration:.42,ease:'power3.out'},0);
+  tl.fromTo('#s3-turner',{rotateY:-80},{rotateY:0,duration:.56,ease:'power3.out'},0.02);
+  tl.to('#s3-turner',{opacity:0,duration:.16,ease:'power2.in'},0.56);
+
+  tl.fromTo('#s3-sec',{opacity:.2},{opacity:1,duration:.28,ease:'power2.out'},0.1);
+  tl.fromTo('#s3-h',{opacity:.15,y:20},{opacity:1,y:0,duration:.46,ease:'power3.out'},0.14);
+  tl.fromTo('#s3-p',{opacity:0,y:14},{opacity:1,y:0,duration:.4,ease:'power3.out'},0.22);
+  tl.fromTo('#s3-big',{opacity:.2,scale:.94},{opacity:1,scale:1,duration:.44,ease:'power3.out'},0.42);
+  tl.fromTo('#s3-bigk',{opacity:0},{opacity:1,duration:.3,ease:'power2.out'},0.58);
+  tl.fromTo('#s3-quote2',{opacity:.15,y:16},{opacity:1,y:0,duration:.44,ease:'power3.out'},0.7);
+
+  tl.fromTo(cards,{opacity:0,y:26,scale:.96},{opacity:1,y:0,scale:1,duration:.4,stagger:.05,ease:'power3.out'},0.3);
+  tl.fromTo('#s3-grid .tick',{width:0,opacity:0},{width:30,opacity:1,duration:.28,stagger:.05,ease:'power2.out'},0.58);
+  tl.fromTo('#s3-src',{opacity:0},{opacity:1,duration:.3,ease:'power2.out'},1.0);
+
+  tl.to('#s3-spread',{scale:.985,y:-16,opacity:0,duration:.22,ease:'power3.in'},3.32);
+
+  window.__timelines['s3'] = tl;
+})();
+</script>
+</template>

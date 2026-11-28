@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920, height=1080" />
+<title>Léo et Léa — mon argent, mes choix, mon avenir · HyperFrames 20 s</title>
+<link rel="stylesheet" href="assets/book.css" />
+<script src="assets/gsap.min.js"></script>
+</head>
+<body>
+<!-- ============================================================
+     ROOT : ne porte que les hôtes de scènes + l'audio.
+     Une scène = une sous-composition dans compositions/.
+     ============================================================ -->
+<div id="root" data-composition-id="main" data-start="0" data-duration="20" data-fps="60" data-width="1920" data-height="1080">
+
+  <div id="s1" data-composition-id="s1" data-composition-src="compositions/s1-cover.html"
+       data-start="0" data-duration="2.6" data-track-index="1" data-track-kind="graphics"
+       data-width="1920" data-height="1080" data-layout-allow-overlap></div>
+
+  <div id="s2" data-composition-id="s2" data-composition-src="compositions/s2-open.html"
+       data-start="2.6" data-duration="2.6" data-track-index="1" data-track-kind="graphics"
+       data-width="1920" data-height="1080" data-layout-allow-overlap></div>
+
+  <div id="s3" data-composition-id="s3" data-composition-src="compositions/s3-lessons.html"
+       data-start="5.2" data-duration="3.6" data-track-index="1" data-track-kind="graphics"
+       data-width="1920" data-height="1080" data-layout-allow-overlap></div>
+
+  <div id="s4" data-composition-id="s4" data-composition-src="compositions/s4-need.html"
+       data-start="8.8" data-duration="3.4" data-track-index="1" data-track-kind="graphics"
+       data-width="1920" data-height="1080" data-layout-allow-overlap></div>
+
+  <div id="s5" data-composition-id="s5" data-composition-src="compositions/s5-envelopes.html"
+       data-start="12.2" data-duration="3.0" data-track-index="1" data-track-kind="graphics"
+       data-width="1920" data-height="1080" data-layout-allow-overlap></div>
+
+  <div id="s6" data-composition-id="s6" data-composition-src="compositions/s6-jar.html"
+       data-start="15.2" data-duration="2.4" data-track-index="1" data-track-kind="graphics"
+       data-width="1920" data-height="1080" data-layout-allow-overlap></div>
+
+  <div id="s7" data-composition-id="s7" data-composition-src="compositions/s7-outro.html"
+       data-start="17.6" data-duration="2.4" data-track-index="1" data-track-kind="graphics"
+       data-width="1920" data-height="1080" data-layout-allow-overlap></div>
+
+  <audio id="snd" src="assets/audio/leo-lea.wav" data-start="0" data-duration="20" data-track-index="9"
+         data-volume="0.9" data-fade-in="0.02" data-fade-out="0.18"></audio>
+</div>
+
+<script>
+  window.__timelines = window.__timelines || {};
+  /* la racine ne fait que monter les scènes : chaque scène porte sa propre timeline */
+  window.__timelines["main"] = gsap.timeline({ paused: true });
+</script>
+</body>
+</html>

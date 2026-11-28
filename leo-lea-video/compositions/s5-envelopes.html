@@ -1,0 +1,121 @@
+<template>
+<link rel="stylesheet" href="../assets/book.css" />
+<style>
+  #root{position:absolute;inset:0}
+  #s5-spread{position:absolute;left:130px;top:96px;width:1660px;height:888px}
+
+  #s5-h{font-size:56px;font-weight:800;letter-spacing:-.042em;line-height:1.02}
+  #s5-p{font-size:34px;line-height:1.3;color:#575752;margin-top:16px;font-weight:600;letter-spacing:-.02em}
+  #s5-list{margin-top:28px;display:flex;flex-direction:column}
+  #s5-list .r{display:flex;align-items:center;gap:16px;padding:18px 0;border-bottom:1px solid #ecebe6;font-size:30px;font-weight:600;letter-spacing:-.02em}
+  #s5-list .r b{margin-left:auto;font-size:28px;color:#9b9a93;letter-spacing:.06em}
+
+  /* 3 enveloppes papier avec rabat */
+  .env{position:absolute;top:96px;width:226px;height:500px;border-radius:10px;background:#fff;
+    border:1px solid #ecebe6;box-shadow:0 18px 40px rgba(18,18,17,.09);overflow:hidden}
+  .env .fill{position:absolute;left:0;right:0;bottom:0;height:0}
+  .env .flap{position:absolute;left:0;right:0;top:0;height:104px;z-index:4;
+    background:linear-gradient(180deg,#fbf9f3,#f3f0e6);border-bottom:1px solid #ecebe6;
+    clip-path:polygon(0 0,100% 0,50% 100%)}
+  .env .head{position:absolute;left:0;right:0;top:112px;z-index:5;text-align:center}
+  .env .head .k{font-size:28px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#8d8c85}
+  .env .head .v{font-size:32px;font-weight:800;letter-spacing:-.03em;margin-top:6px}
+  .env .head .h{font-size:28px;font-weight:400;color:#7c7b74;margin-top:10px;line-height:1.16;padding:0 12px}
+  .env .seal{position:absolute;left:50%;bottom:18px;width:44px;height:44px;margin-left:-22px;border-radius:50%;
+    background:#ffbe0c;box-shadow:inset 0 0 0 4px rgba(255,255,255,.6);z-index:6;opacity:0}
+
+  #s5-e1{left:0} #s5-e1 .fill{background:linear-gradient(180deg,rgba(255,190,12,.32),rgba(255,190,12,.62))}
+  #s5-e2{left:246px} #s5-e2 .fill{background:linear-gradient(180deg,rgba(10,194,106,.26),rgba(31,107,69,.56))}
+  #s5-e3{left:492px} #s5-e3 .fill{background:linear-gradient(180deg,rgba(0,160,254,.20),rgba(131,56,235,.38))}
+
+  #s5-note{margin-top:28px;font-size:29px;line-height:1.38;color:#575752;padding-bottom:6px}
+  #s5-p b{color:#121211;font-weight:600}
+  #s5-note b{color:#121211;font-weight:600}
+</style>
+
+<div id="root" data-composition-id="s5" data-width="1920" data-height="1080">
+  <div class="book-scene">
+    <div class="ground" data-layout-ignore="true"></div>
+    <div class="grain" data-layout-ignore="true"></div>
+
+    <div id="s5-clip-page" class="clip" data-start="0" data-duration="3.0" data-track-index="1" data-layout-allow-overflow>
+      <div class="stage">
+        <div id="s5-spread" class="spread">
+          <!-- page gauche : le principe -->
+          <div class="pg left">
+            <div class="runhead"><span>Chapitre 02</span><span>La méthode</span></div>
+            <div class="hairline"></div>
+            <div class="content">
+              <div id="s5-h">Trois enveloppes,<br>un seul budget.</div>
+              <div id="s5-p">On range l'argent <b>avant</b> de le dépenser.</div>
+              <div id="s5-list">
+                <div class="r"><span class="d" data-layout-ignore="true" style="width:12px;height:12px;border-radius:50%;background:#1f6b45;flex:none"></span>Dépenser : le quotidien<b>60 %</b></div>
+                <div class="r"><span class="d" data-layout-ignore="true" style="width:12px;height:12px;border-radius:50%;background:#0ac26a;flex:none"></span>Épargner : le projet<b>30 %</b></div>
+                <div class="r"><span class="d" data-layout-ignore="true" style="width:12px;height:12px;border-radius:50%;background:#8338eb;flex:none"></span>Partager : les autres<b>10 %</b></div>
+              </div>
+              <div id="s5-note"><b>Dépenser, épargner, partager</b> : le même geste chaque mois.</div>
+            </div>
+            <div class="pnum" data-layout-ignore="true">16</div>
+          </div>
+
+          <!-- page droite : les 3 enveloppes -->
+          <div class="pg right">
+            <div class="runhead"><span>Chapitre 02</span><span>Le geste</span></div>
+            <div class="hairline"></div>
+            <div class="content">
+              <div id="s5-e1" class="env">
+                <div class="flap" data-layout-ignore="true"></div>
+                <div class="fill" data-layout-ignore="true"></div>
+                <div class="head"><div class="k">Dépenser</div><div class="v">Le quotidien</div><div class="h">Goûters, sorties,<br>petits plaisirs.</div></div>
+                <div class="seal" data-layout-ignore="true"></div>
+              </div>
+              <div id="s5-e2" class="env">
+                <div class="flap" data-layout-ignore="true"></div>
+                <div class="fill" data-layout-ignore="true"></div>
+                <div class="head"><div class="k">Épargner</div><div class="v">Le projet</div><div class="h">Ce que je garde<br>pour plus tard.</div></div>
+                <div class="seal" data-layout-ignore="true"></div>
+              </div>
+              <div id="s5-e3" class="env">
+                <div class="flap" data-layout-ignore="true"></div>
+                <div class="fill" data-layout-ignore="true"></div>
+                <div class="head"><div class="k">Partager</div><div class="v">Les autres</div><div class="h">Un cadeau,<br>un coup de main.</div></div>
+                <div class="seal" data-layout-ignore="true"></div>
+              </div>
+            </div>
+            <div class="pnum" data-layout-ignore="true">17</div>
+          </div>
+
+          <div class="gutter" data-layout-ignore="true"></div>
+          <div id="s5-turner" class="turner" data-layout-ignore="true"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var tl = gsap.timeline({ paused:true });
+  var envs = ['#s5-e1','#s5-e2','#s5-e3'];
+
+  tl.set('#s5-turner',{rotateY:-80,transformPerspective:2400,transformOrigin:'left center'},0);
+  tl.fromTo('#s5-spread',{scale:.972,y:22},{scale:1,y:0,duration:.42,ease:'power3.out'},0);
+  tl.fromTo('#s5-turner',{rotateY:-80},{rotateY:0,duration:.54,ease:'power3.out'},0.02);
+  tl.to('#s5-turner',{opacity:0,duration:.16,ease:'power2.in'},0.54);
+
+  tl.fromTo('#s5-h',{opacity:.15,y:18},{opacity:1,y:0,duration:.46,ease:'power3.out'},0.08);
+  tl.fromTo('#s5-p',{opacity:0,y:12},{opacity:1,y:0,duration:.4,ease:'power3.out'},0.26);
+  tl.fromTo('#s5-list .r',{opacity:0,x:-14},{opacity:1,x:0,duration:.34,stagger:.07,ease:'power3.out'},0.4);
+  tl.fromTo('#s5-note',{opacity:0,y:12},{opacity:1,y:0,duration:.4,ease:'power3.out'},0.6);
+
+  tl.fromTo(envs,{opacity:0,y:40,rotate:-2},{opacity:1,y:0,rotate:0,duration:.46,stagger:.09,ease:'power3.out'},0.16);
+  tl.fromTo(envs.map(function(e){return e+' .fill';}),{height:'0%'},{height:'58%',duration:.7,stagger:.12,ease:'power3.out'},0.44);
+  tl.to('#s5-e2 .fill',{height:'70%',duration:.5,ease:'sine.inOut'},1.16);
+  tl.fromTo(envs.map(function(e){return e+' .seal';}),{opacity:0,scale:.4},{opacity:1,scale:1,duration:.3,stagger:.1,ease:'back.out(1.6)'},1.06);
+
+  tl.to('#s5-spread',{scale:.985,y:-16,opacity:0,duration:.22,ease:'power3.in'},2.78);
+
+  window.__timelines['s5'] = tl;
+})();
+</script>
+</template>

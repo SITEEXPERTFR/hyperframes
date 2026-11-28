@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
-<title>Léo et Léa — lecteur HyperFrames 20 s</title>
+<title>Léo et Léa — spot HyperFrames 20 s (multi-scènes)</title>
 <style>
   *{box-sizing:border-box} body{margin:0;background:#fafaf9;color:#121211;font-family:Inter,system-ui,sans-serif;
     background-image:radial-gradient(rgba(231,231,228,.55) 1px,transparent 1px);background-size:36px 36px}
@@ -33,24 +33,25 @@
     <h1><span>Léo et Léa</span> — HyperFrames</h1>
     <div class="sub">20,000 s · 60 fps · 1920×1080 · 1200 frames · H.264 + AAC</div>
   </header>
-  <video id="v" src="/leo-lea-hyperframes.mp4?v=ll-1" poster="/tasty-crousty/stills/leo-lea/poster.png?v=ll-1"
+  <video id="v" src="/leo-lea-hyperframes.mp4?v=ll-2" poster="/tasty-crousty/stills/leo-lea/poster.jpg?v=ll-2"
          controls autoplay muted loop playsinline preload="auto"></video>
   <div class="bar">
     <span class="sub">Qualité :</span>
-    <button data-src="/leo-lea-hyperframes.mp4?v=ll-1" class="active">1080p60 · 4,5 Mo</button>
-    <button data-src="/leo-lea-hyperframes-720p.mp4?v=ll-1">720p60 · 1,6 Mo</button>
+    <button data-src="/leo-lea-hyperframes.mp4?v=ll-2" class="active">1080p60 · 5,8 Mo</button>
+    <button data-src="/leo-lea-hyperframes-720p.mp4?v=ll-2">720p60 · 1,2 Mo</button>
     <button id="son" class="son">🔊 Activer le son</button>
     <a id="dl" class="chip" href="/download/leo-lea.mp4" download>⬇ Télécharger 1080p60</a>
     <a class="chip" href="/download/leo-lea-720p.mp4" download>⬇ 720p léger</a>
     <a class="chip" href="/download">Page de téléchargement</a>
   </div>
-  <p class="note">Objet livre typographique, aucune image générée, aucun faux screenshot produit : tous les faits affichés viennent de la fiche Amazon (67 pages, 8–12 ans, 16,99 × 24,99 cm, 177 g, ASIN B0HPJ2T1C3). Voir <a href="/leo-lea-hyperframes/README.md" target="_blank">le README et la note de transparence</a>.</p>
-  <h2>STORYBOARD — 20 INSTANTS</h2>
-  <img class="sheet" src="/tasty-crousty/stills/leo-lea/contact-sheet.jpg?v=ll-1" alt="Storyboard Léo et Léa">
+  <p class="note">Film HyperFrames multi-scènes : 7 sous-compositions, chacune avec ses clips minutés et sa timeline GSAP en pause, montées par <code>index.html</code>. Le livre est montré comme objet (couverture cartonnée) et comme pages imprimées. Aucune image générée, aucun faux screenshot produit : tous les faits affichés viennent de la fiche Amazon (67 pages, 8–12 ans, 16,99 × 24,99 cm, 177 g, ASIN B0HPJ2T1C3). La couverture officielle n'étant pas accessible depuis cet environnement, elle est <strong>reconstituée</strong> en CSS et signalée à l'écran. Voir <a href="/leo-lea-video/README.md" target="_blank">le README et la note de transparence</a>.</p>
+  <h2>STORYBOARD — 7 SCÈNES</h2>
+  <img class="sheet" src="/tasty-crousty/stills/leo-lea/contact-sheet.jpg?v=ll-2" alt="Storyboard Léo et Léa">
   <div class="links">
-    <a class="chip" href="/leo-lea-hyperframes/README.md" target="_blank">README du projet</a>
-    <a class="chip" href="/leo-lea-hyperframes/ANIMATIONS.md" target="_blank">Timeline unique</a>
-    <a class="chip" href="/leo-lea-hyperframes/index.html" target="_blank">Source HTML HyperFrames</a>
+    <a class="chip" href="/leo-lea-video/README.md" target="_blank">README du projet</a>
+    <a class="chip" href="/leo-lea-video/SPEC.md" target="_blank">Brief / SPEC</a>
+    <a class="chip" href="/leo-lea-video/index.html" target="_blank">index.html (racine HyperFrames)</a>
+    <a class="chip" href="/leo-lea-video/compositions/s3-lessons.html" target="_blank">Une scène (s3)</a>
     <a class="chip" href="/">Retour au lecteur complet</a>
   </div>
 </div>

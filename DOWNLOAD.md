@@ -29,6 +29,7 @@ Si un lien ouvre la vidéo au lieu de la télécharger : clic droit → « Enreg
 - [Télécharger le MP4 1080p60 via GitHub](https://github.com/SITEEXPERTFR/hyperframes/raw/refs/heads/arena/9dec692a-hyperframes/leo-lea-hyperframes.mp4)
 - [Télécharger la version 720p via GitHub](https://github.com/SITEEXPERTFR/hyperframes/raw/refs/heads/arena/9dec692a-hyperframes/leo-lea-hyperframes-720p.mp4)
 - Depuis le preview : `/download/leo-lea.mp4`, `/download/leo-lea-720p.mp4`, lecteur dédié `/leo-lea`, storyboard `/tasty-crousty/stills/leo-lea/contact-sheet.jpg`
-- Taille : 4 626 192 octets · SHA-256 : `30c5d1dbb6a385b4455e55cf599d976bf7da3e782d729b2c10e2af7d989fd866`
-- 720p : 1 599 282 octets · SHA-256 : `068ef5fe1b4e05edff5057cce115558a25a707b6ac9fcb8fc0e772e932dc6571`
-- Source : [`leo-lea-hyperframes/`](leo-lea-hyperframes/) · `hyperframes check --json` : `ok:true`, 0 erreur, craft 0
+- Taille : 6 050 251 octets · SHA-256 : `185b60892c40ca6da5ed8c0d674b298250b9bc629533589482e0a7528bbdc0d9`
+- 720p : 1 197 220 octets · SHA-256 : `d476f873c1de02942b68e0dd10ec39ed4344ba4c4c6a0f9c1e8fd67650f6ae1e`
+- Source : [`leo-lea-video/`](leo-lea-video/) (projet HyperFrames multi-scènes : 7 sous-compositions) · `hyperframes check --json` : `ok:true`, **0 erreur, 0 avertissement** (lint, craft, layout, runtime, audio)
+- Ancienne version mono-fichier conservée pour comparaison : [`leo-lea-hyperframes/`](leo-lea-hyperframes/)
