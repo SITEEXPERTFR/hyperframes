@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>KAIRO — HyperFrames (lecteur)</title>
+<style>
+  @font-face { font-family: 'Space Grotesk'; src: url('/tasty-crousty/preview/fonts/SpaceGrotesk_700Bold.ttf') format('truetype'); font-weight: 700; }
+  @font-face { font-family: 'Inter'; src: url('/tasty-crousty/preview/fonts/Inter_400Regular.ttf') format('truetype'); font-weight: 400; }
+  @font-face { font-family: 'Inter'; src: url('/tasty-crousty/preview/fonts/Inter_600SemiBold.ttf') format('truetype'); font-weight: 600; }
+  :root { --pink:#FF2D78; --cyan:#22E0E8; --blue:#3B82F6; --blue2:#60A5FA; --bg:#06070A; --cream:#FFFFFF; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--cream); font-family:'Inter',system-ui,sans-serif;
+         background-image: radial-gradient(900px 600px at 15% 0%, rgba(37,99,235,.18), transparent 70%),
+                           radial-gradient(900px 600px at 85% 40%, rgba(96,165,250,.10), transparent 70%); }
+  .wrap { max-width:1120px; margin:0 auto; padding:28px 20px 70px; }
+  header { display:flex; align-items:baseline; gap:16px; flex-wrap:wrap; margin-bottom:18px; }
+  h1 { font-family:'Space Grotesk',sans-serif; font-size:clamp(26px,4vw,44px); margin:0; letter-spacing:.02em; }
+  h1 span { color:var(--blue2); }
+  .sub { color:#9AA7BF; font-size:14px; }
+  .player { position:relative; border-radius:16px; overflow:hidden; border:1px solid rgba(96,165,250,.42);
+            box-shadow:0 0 70px rgba(37,99,235,.18), 0 20px 60px rgba(0,0,0,.6); background:#000; }
+  video { display:block; width:100%; height:auto; aspect-ratio:16/9; background:#000; }
+  .bar { display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin:16px 0 8px; }
+  button, .chip { font-family:'Inter',sans-serif; font-size:13px; font-weight:600; cursor:pointer;
+                  color:var(--cream); background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.16);
+                  border-radius:999px; padding:9px 15px; transition:.18s; text-decoration:none; }
+  button:hover, .chip:hover { border-color:var(--cyan); color:var(--cyan); }
+  button.active { background:linear-gradient(180deg,#4B8DF8,#2563EB); border-color:var(--blue2); color:#fff; box-shadow:0 0 22px rgba(37,99,235,.55); }
+  button.son { background:var(--cyan); border-color:var(--cyan); color:#04121a; }
+  .kairo-note { margin:0 0 18px; padding:13px 16px; border:1px solid rgba(96,165,250,.35); border-radius:12px;
+                  background:rgba(37,99,235,.10); color:#DCE7F7; font-size:14px; line-height:1.55; }
+  .kairo-note strong { color:#fff; } .kairo-note a { color:var(--blue2); }
+  .hint { color:#8B98B2; font-size:13px; margin:6px 0 0; }
+  .err { display:none; margin-top:12px; padding:12px 16px; border-radius:10px;
+         border:1px solid var(--pink); background:rgba(255,45,120,.1); font-size:14px; }
+  .err a { color:var(--cyan); }
+  h2 { font-family:'Space Grotesk',sans-serif; font-size:20px; margin:38px 0 14px; letter-spacing:.04em; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:12px; }
+  .grid figure { margin:0; border-radius:10px; overflow:hidden; border:1px solid rgba(255,255,255,.1); background:#11121c; }
+  .grid img { width:100%; display:block; }
+  .grid figcaption { padding:8px 10px; font-size:12px; color:#9AA7BF; letter-spacing:.08em; }
+  .links { margin-top:30px; display:flex; flex-wrap:wrap; gap:10px; }
+  footer { margin-top:36px; color:#6E7C96; font-size:12px; line-height:1.6; }
+  code { color:var(--cyan); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header id="kairo">
+    <h1><span>KAIRO.</span> — HyperFrames</h1>
+    <div class="sub">Kairo 20 s + Pixel Pop! 6 s + Léo et Léa 20 s · 60 fps · 1920×1080 · HyperFrames officiel</div>
+  </header>
+  <div class="kairo-note"><strong>KAIRO est maintenant la vidéo chargée par défaut dans le preview.</strong> Si ton navigateur affiche encore l’ancien spot, recharge la page. Accès direct : <a href="/download">page de téléchargement (avec lien GitHub de secours)</a> · <a href="/download/kairo.mp4">MP4 1080p60</a> · <a href="/download/kairo-720p.mp4">MP4 720p léger</a> · <a href="/kairo">lecteur Kairo seul</a>.</div>
+
+  <div class="player">
+    <video id="v" src="/kairo-hyperframes.mp4?v=kairo-1" poster="/tasty-crousty/stills/kairo/poster.png?v=kairo-1"
+           controls autoplay muted loop playsinline preload="auto"></video>
+  </div>
+
+  <div class="bar">
+    <span class="sub" style="margin-right:4px">Kairo :</span>
+    <button data-src="/kairo-hyperframes.mp4?v=kairo-1" class="active">KAIRO 1080p60 · 7,3 Mo</button>
+    <button data-src="/kairo-hyperframes-720p.mp4?v=kairo-1">Kairo 720p · 1,4 Mo</button>
+    <button data-src="/pixel-pop-hyperframes.mp4?v=pp-1">Pixel Pop! 6 s · 3,2 Mo</button>
+    <button data-src="/pixel-pop-hyperframes-720p.mp4?v=pp-1">Pixel Pop! 720p · 0,8 Mo</button>
+    <button data-src="/leo-lea-hyperframes.mp4?v=ll-1">Léo et Léa 20 s · 4,5 Mo</button>
+    <button data-src="/leo-lea-hyperframes-720p.mp4?v=ll-1">Léo et Léa 720p · 1,6 Mo</button>
+    <button id="son" class="son">🔊 Activer le son</button>
+    <a id="dl" class="chip" href="/download/kairo.mp4" download>⬇ Télécharger Kairo</a>
+    <a class="chip" href="/download/kairo-720p.mp4" download>⬇ Kairo 720p</a>
+    <a class="chip" href="/download">Page de téléchargement</a>
+    <span class="sub" style="margin:0 4px 0 14px">Anciens projets :</span>
+    <button data-src="/tasty-crousty-hyperframes-v2.mp4">Tasty V2 · 12 Mo</button>
+    <button data-src="/tasty-crousty-hyperframes-v2-leger.mp4">V2 720p · 2,4 Mo</button>
+    <button data-src="/tasty-crousty-hyperframes.mp4">HyperFrames V1 · 3,7 Mo</button>
+    <button data-src="/tasty-crousty-hd.mp4">Canvas HD · 5 Mo</button>
+    <button data-src="/tasty-crousty-leger.mp4">Canvas 720p · 2 Mo</button>
+    <button data-src="/tasty-crousty-mini.mp4">Canvas mini · 1 Mo</button>
+    <button data-src="/tasty-crousty.mp4">Canvas original · 22 Mo</button>
+  </div>
+  <p class="hint">Le navigateur coupe le son au démarrage : clique sur « Activer le son ». Si la lecture ne part pas, clique sur ▶ dans le lecteur.</p>
+  <div class="err" id="err">Le lecteur n'a pas pu charger la vidéo. <a id="errlink" href="/tasty-crousty-mini.mp4">Ouvre la version mini directement</a> ou télécharge le fichier ci-dessus.</div>
+
+  <h2>STORYBOARD LÉO ET LÉA — 20 INSTANTS</h2>
+  <img src="/tasty-crousty/stills/leo-lea/contact-sheet.jpg?v=ll-1" alt="Storyboard Léo et Léa" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.12)">
+
+  <h2>STORYBOARD PIXEL POP! — 12 INSTANTS</h2>
+  <img src="/tasty-crousty/stills/pixel-pop/contact-sheet.jpg?v=pp-1" alt="Storyboard Pixel Pop" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.12)">
+
+  <h2>STORYBOARD KAIRO — 10 INSTANTS</h2>
+  <img src="/tasty-crousty/stills/kairo/contact-sheet.jpg?v=kairo-1" alt="Storyboard Kairo" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.12)">
+
+  <h2>STORYBOARD TASTY V2 — 9 INSTANTS</h2>
+  <img src="/tasty-crousty/stills/hyperframes-v2/contact-sheet.jpg" alt="Storyboard V2" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.12)">
+
+  <h2>STORYBOARD HYPERFRAMES V1 — 8 INSTANTS</h2>
+  <div class="grid" id="grid"></div>
+
+  <h2>TOUS LES FICHIERS</h2>
+  <div class="links">
+    <a class="chip" href="/pixel-pop">▶ Lecteur Pixel Pop! seul</a>
+    <a class="chip" href="/download/pixel-pop.mp4" download>Pixel Pop! 1080p60 (3,2 Mo)</a>
+    <a class="chip" href="/download/pixel-pop-720p.mp4" download>Pixel Pop! 720p (0,8 Mo)</a>
+    <a class="chip" href="/leo-lea">▶ Lecteur Léo et Léa seul</a>
+    <a class="chip" href="/download/leo-lea.mp4" download>Léo et Léa 1080p60 (4,5 Mo)</a>
+    <a class="chip" href="/download/leo-lea-720p.mp4" download>Léo et Léa 720p (1,6 Mo)</a>
+    <a class="chip" href="/leo-lea-hyperframes/README.md" target="_blank">Projet Léo et Léa (README)</a>
+    <a class="chip" href="/pixel-pop-hyperframes/README.md" target="_blank">Projet Pixel Pop! (README)</a>
+    <a class="chip" href="/pixel-pop-hyperframes/assets/real/ASSETS.md" target="_blank">Provenance des assets</a>
+    <a class="chip" href="/download">⬇ Page de téléchargement Kairo</a>
+    <a class="chip" href="/download/kairo.mp4" download>Kairo 1080p60 (7 Mo)</a>
+    <a class="chip" href="/download/kairo-720p.mp4" download>Kairo 720p (1,4 Mo)</a>
+    <a class="chip" href="/kairo">▶ Lecteur Kairo seul</a>
+    <a class="chip" href="/kairo-hyperframes/README.md" target="_blank">Projet Kairo (README)</a>
+    <a class="chip" href="/kairo-hyperframes/ANIMATIONS.md" target="_blank">Timeline Kairo</a>
+    <a class="chip" href="/tasty-crousty.mp4" download>Original 1080p (22 Mo)</a>
+    <a class="chip" href="/tasty-crousty-hd.mp4" download>HD léger (5 Mo)</a>
+    <a class="chip" href="/tasty-crousty-leger.mp4" download>720p (2 Mo)</a>
+    <a class="chip" href="/tasty-crousty-mini.mp4" download>480p (1 Mo)</a>
+    <a class="chip" href="/tasty-crousty-muet.mp4" download>Version muette</a>
+    <a class="chip" href="/tasty-crousty-hyperframes.mp4" download>Rendu HyperFrames V1</a>
+    <a class="chip" href="/tasty-crousty-hyperframes-v2.mp4" download>V2 1080p (12 Mo)</a>
+    <a class="chip" href="/tasty-crousty-hyperframes-v2-leger.mp4" download>V2 720p léger (2,4 Mo)</a>
+    <a class="chip" href="/tasty-crousty-hyperframes-v2/README.md" target="_blank">Projet V2 (README)</a>
+    <a class="chip" href="/tasty-crousty-hyperframes-v2/ANIMATIONS.md" target="_blank">Animations V2</a>
+    <a class="chip" href="/kairo-hyperframes-720p.mp4" download>Kairo 720p (2 Mo)</a>
+    <a class="chip" href="/tasty-crousty/stills/kairo/contact-sheet.jpg" target="_blank">Storyboard Kairo</a>
+    <a class="chip" href="/tasty-crousty/stills/hyperframes-v2/contact-sheet.jpg" target="_blank">Snapshots V2</a>
+    <a class="chip" href="/tasty-crousty-hyperframes/README.md" target="_blank">Projet HyperFrames (README)</a>
+    <a class="chip" href="/tasty-crousty-hyperframes/ANIMATIONS.md" target="_blank">Animations · 6 timelines</a>
+    <a class="chip" href="/tasty-crousty-hyperframes/SPEC.md" target="_blank">SPEC / beat sheet</a>
+    <a class="chip" href="/tasty-crousty/stills/contact-sheet-hyperframes.jpg" target="_blank">Snapshots HyperFrames</a>
+    <a class="chip" href="/tasty-crousty/stills/planche-hyperframes.jpg" target="_blank">Planche MP4 HyperFrames</a>
+    <a class="chip" href="/tasty-crousty/stills/planche-finale.jpg" target="_blank">Planche 16 vues</a>
+  </div>
+
+  <footer>
+    Lecteur servi depuis ton workspace, avec prise en charge des requêtes HTTP Range (seek dans la vidéo).<br>
+    Kairo : <code>npx hyperframes render kairo-hyperframes --fps 60</code> ·
+    Tasty V2 : <code>npx hyperframes render tasty-crousty-hyperframes-v2</code> ·
+    secours canvas : <code>bash tasty-crousty/setup.sh &amp;&amp; cd tasty-crousty &amp;&amp; npm run video</code>
+  </footer>
+</div>
+
+<script>
+  const v = document.getElementById('v');
+  const buttons = [...document.querySelectorAll('button[data-src]')];
+  const dl = document.getElementById('dl');
+  const err = document.getElementById('err');
+
+  const shots = [
+    ['1,5','Logo néon','/tasty-crousty/stills/hyperframes/frame-00-at-1.5s.png'],
+    ['4,2','Riz','/tasty-crousty/stills/hyperframes/frame-01-at-4.2s.png'],
+    ['6,6','Poulet & sauce','/tasty-crousty/stills/hyperframes/frame-02-at-6.6s.png'],
+    ['8,8','Le crousty complet','/tasty-crousty/stills/hyperframes/frame-03-at-8.8s.png'],
+    ['12,5','Le réseau','/tasty-crousty/stills/hyperframes/frame-04-at-12.5s.png'],
+    ['16,4','Pas de compromis','/tasty-crousty/stills/hyperframes/frame-05-at-16.4s.png'],
+    ['18,8','La sauce secrète','/tasty-crousty/stills/hyperframes/frame-06-at-18.8s.png'],
+    ['21,6','Outro','/tasty-crousty/stills/hyperframes/frame-07-at-21.6s.png']
+  ];
+  document.getElementById('grid').innerHTML = shots.map(([t,label,src]) =>
+    `<figure><img src="${src}" alt="${label} à ${t}s" loading="lazy">
+     <figcaption>${t} s — ${label}</figcaption></figure>`).join('');
+
+  buttons.forEach(b => b.addEventListener('click', () => {
+    const at = v.currentTime, playing = !v.paused, muted = v.muted;
+    v.src = b.dataset.src;
+    v.poster = b.dataset.src.indexOf('kairo') >= 0 ? '/tasty-crousty/stills/kairo/poster.png?v=kairo-1'
+             : b.dataset.src.indexOf('pixel-pop') >= 0 ? '/tasty-crousty/stills/pixel-pop/poster.png?v=pp-1'
+             : b.dataset.src.indexOf('leo-lea') >= 0 ? '/tasty-crousty/stills/leo-lea/poster.png?v=ll-1'
+             : '/tasty-crousty/stills/hyperframes-v2/poster.png';
+    const src = b.dataset.src;
+    dl.href = src.indexOf('kairo-hyperframes-720p') >= 0 ? '/download/kairo-720p.mp4'
+            : src.indexOf('kairo-hyperframes') >= 0 ? '/download/kairo.mp4'
+            : src.indexOf('pixel-pop-hyperframes-720p') >= 0 ? '/download/pixel-pop-720p.mp4'
+            : src.indexOf('pixel-pop-hyperframes') >= 0 ? '/download/pixel-pop.mp4'
+            : src.indexOf('leo-lea-hyperframes-720p') >= 0 ? '/download/leo-lea-720p.mp4'
+            : src.indexOf('leo-lea-hyperframes') >= 0 ? '/download/leo-lea.mp4'
+            : src.split('?')[0];
+    dl.textContent = b.dataset.src.indexOf('kairo') >= 0 ? '⬇ Télécharger Kairo'
+                   : b.dataset.src.indexOf('pixel-pop') >= 0 ? '⬇ Télécharger Pixel Pop!'
+                   : b.dataset.src.indexOf('leo-lea') >= 0 ? '⬇ Télécharger Léo et Léa'
+                   : '⬇ Télécharger';
+    document.getElementById('errlink').href = '/tasty-crousty-mini.mp4';
+    err.style.display = 'none';
+    buttons.forEach(x => x.classList.toggle('active', x === b));
+    v.addEventListener('loadedmetadata', function once() {
+      try { v.currentTime = at; } catch (_) {}
+      v.muted = muted;
+      if (playing) v.play().catch(() => {});
+      v.removeEventListener('loadedmetadata', once);
+    });
+    v.load();
+  }));
+
+  document.getElementById('son').addEventListener('click', e => {
+    v.muted = false; v.volume = .9;
+    v.play().catch(() => {});
+    e.target.textContent = '🔊 Son activé';
+  });
+
+  v.addEventListener('error', () => { err.style.display = 'block'; });
+  v.addEventListener('playing', () => { err.style.display = 'none'; });
+  v.play().catch(() => { /* autoplay bloqué : les contrôles restent dispo */ });
+</script>
+</body>
+</html>

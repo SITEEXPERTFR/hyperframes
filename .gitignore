@@ -201,3 +201,6 @@ chrome/
 # Python bytecode from running skill scripts
 __pycache__/
 *.pyc
+
+# Cached web image research from this session (scratch, not part of the PR)
+/image-search/

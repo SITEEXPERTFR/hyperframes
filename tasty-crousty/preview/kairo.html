@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<title>KAIRO — lecteur HyperFrames 60 fps</title>
+<style>
+  *{box-sizing:border-box} body{margin:0;background:#06070A;color:#fff;font-family:Inter,system-ui,sans-serif;
+    background-image:radial-gradient(900px 600px at 50% 0%,rgba(37,99,235,.18),transparent 70%)}
+  .wrap{max-width:1120px;margin:0 auto;padding:28px 20px 60px}
+  header{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+  h1{font-size:clamp(28px,4vw,48px);margin:0;letter-spacing:-.04em} h1 span{color:#60A5FA}
+  .sub{color:#94A3B8;font-size:14px}
+  video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#000;border-radius:16px;
+    border:1px solid rgba(96,165,250,.42);box-shadow:0 0 70px rgba(37,99,235,.18),0 20px 60px rgba(0,0,0,.6)}
+  .bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:16px 0 12px}
+  button,.chip{font-family:Inter,system-ui,sans-serif;font-size:13px;font-weight:600;cursor:pointer;color:#fff;
+    background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:9px 15px;
+    transition:.18s;text-decoration:none}
+  button:hover,.chip:hover{border-color:#60A5FA;color:#60A5FA}
+  button.active{background:linear-gradient(180deg,#4B8DF8,#2563EB);border-color:#60A5FA;box-shadow:0 0 22px rgba(37,99,235,.55)}
+  button.son{background:#60A5FA;border-color:#60A5FA;color:#04121a}
+  h2{font-size:20px;margin:34px 0 14px;letter-spacing:.04em}
+  img.sheet{width:100%;display:block;border-radius:12px;border:1px solid rgba(255,255,255,.12)}
+  .links{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px}
+  .note{color:#94A3B8;font-size:13px;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1><span>KAIRO.</span> — HyperFrames</h1>
+    <div class="sub">20,000 s · 60 fps · 1920×1080 · 1200 frames · H.264 + AAC</div>
+  </header>
+  <video id="v" src="/kairo-hyperframes.mp4?v=kairo-1" poster="/tasty-crousty/stills/kairo/poster.png?v=kairo-1"
+         controls autoplay muted loop playsinline preload="auto"></video>
+  <div class="bar">
+    <span class="sub">Qualité :</span>
+    <button data-src="/kairo-hyperframes.mp4?v=kairo-1" class="active">1080p60 · 7,3 Mo</button>
+    <button data-src="/kairo-hyperframes-720p.mp4?v=kairo-1">720p60 · 1,4 Mo</button>
+    <button id="son" class="son">🔊 Activer le son</button>
+    <a id="dl" class="chip" href="/download/kairo.mp4" download>⬇ Télécharger 1080p60</a>
+    <a class="chip" href="/download/kairo-720p.mp4" download>⬇ 720p léger</a>
+    <a class="chip" href="/download">Page de téléchargement</a>
+  </div>
+  <p class="note"><a href="/download/kairo.mp4">Télécharger directement le MP4 1080p60</a> · <a href="/download">toutes les options, dont le lien GitHub hors preview</a>. Lecture automatique en muet : clique sur « Activer le son ». Cette page est servie sans cache ; si le preview affichait encore Tasty Crousty, cette URL est le lecteur Kairo seul.</p>
+  <h2>STORYBOARD — 10 INSTANTS</h2>
+  <img class="sheet" src="/tasty-crousty/stills/kairo/contact-sheet.jpg?v=kairo-1" alt="Storyboard Kairo">
+  <div class="links">
+    <a class="chip" href="/download/kairo.mp4" download>⬇ MP4 1080p60</a>
+    <a class="chip" href="/download/kairo-720p.mp4" download>⬇ MP4 720p</a>
+    <a class="chip" href="/kairo-hyperframes/README.md" target="_blank">README du projet</a>
+    <a class="chip" href="/kairo-hyperframes/ANIMATIONS.md" target="_blank">Timeline unique</a>
+    <a class="chip" href="/kairo-hyperframes/index.html" target="_blank">Source HTML HyperFrames</a>
+    <a class="chip" href="/">Retour au lecteur complet</a>
+  </div>
+</div>
+<script>
+  const v=document.getElementById('v'), buttons=[...document.querySelectorAll('button[data-src]')], dl=document.getElementById('dl');
+  buttons.forEach(b=>b.addEventListener('click',()=>{
+    const at=v.currentTime, playing=!v.paused, muted=v.muted;
+    v.src=b.dataset.src;
+    dl.href=b.dataset.src.indexOf('kairo-hyperframes-720p')>=0 ? '/download/kairo-720p.mp4' : '/download/kairo.mp4';
+    buttons.forEach(x=>x.classList.toggle('active',x===b));
+    v.addEventListener('loadedmetadata',function once(){ try{v.currentTime=at}catch(_){} v.muted=muted; if(playing)v.play().catch(()=>{}); v.removeEventListener('loadedmetadata',once); });
+    v.load();
+  }));
+  document.getElementById('son').addEventListener('click',e=>{v.muted=false;v.volume=.9;v.play().catch(()=>{});e.target.textContent='🔊 Son activé'});
+  v.play().catch(()=>{});
+</script>
+</body>
+</html>

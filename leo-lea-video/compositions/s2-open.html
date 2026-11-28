@@ -1,0 +1,141 @@
+<template>
+<link rel="stylesheet" href="../assets/book.css" />
+<style>
+  #root{position:absolute;inset:0}
+
+  /* double page : Léo, Léa et la pièce */
+  #s2-spread{position:absolute;left:130px;top:104px;width:1660px;height:872px}
+
+  #s2-left .content,#s2-right .content{display:block}
+  #s2-chap{font-size:28px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#a9a8a1}
+  #s2-chapnum{font-size:96px;font-weight:800;letter-spacing:-.05em;color:#1f6b45;line-height:1;margin-top:6px}
+  #s2-h{font-size:58px;line-height:1.02;font-weight:800;letter-spacing:-.04em;margin-top:22px;width:640px}
+  #s2-p{font-size:40px;line-height:1.22;color:#575752;margin-top:24px;width:620px;font-weight:600;letter-spacing:-.025em}
+  #s2-p b{color:#121211;font-weight:600}
+
+  /* illustration de page : deux enfants qui se partagent une pièce */
+  #s2-art{position:relative;margin-top:auto;height:272px;width:100%}
+  #s2-art .kid{position:absolute;bottom:0;width:150px;height:252px}
+  #s2-art .kid .body{position:absolute;left:50%;bottom:0;width:134px;height:152px;margin-left:-67px;border-radius:66px 66px 16px 16px}
+  #s2-art .kid .head{position:absolute;left:50%;bottom:132px;width:98px;height:98px;margin-left:-49px;border-radius:50%;
+    background:#f7cbaa;box-shadow:inset -10px -12px 0 rgba(18,18,17,.05)}
+  #s2-art .kid .hair{position:absolute;left:50%;bottom:186px;width:106px;height:58px;margin-left:-53px;border-radius:60px 60px 16px 16px}
+  #s2-art #b-leo{left:104px}
+  #s2-art #b-leo .hair{background:#4a3a2c}
+  #s2-art #b-leo .hair::after{content:"";position:absolute;left:-6px;top:28px;width:28px;height:48px;border-radius:15px;background:#4a3a2c}
+  #s2-art #b-leo .body{background:#1f6b45}
+  #s2-art #b-lea{left:392px}
+  #s2-art #b-lea .hair{background:#2f2a26}
+  #s2-art #b-lea .hair::after{content:"";position:absolute;right:-10px;top:26px;width:34px;height:104px;border-radius:17px;background:#2f2a26}
+  #s2-art #b-lea .body{background:#ffbe0c}
+  #s2-coin{position:absolute;left:278px;top:46px;width:88px;height:88px;font-size:40px;z-index:3}
+  #s2-arc{position:absolute;left:118px;top:-10px;width:412px;height:150px;border-top:4px dashed #d9d6cc;border-radius:50% 50% 0 0/100% 100% 0 0}
+
+  /* page de droite : ce que le livre installe */
+  #s2-quote{font-size:56px;line-height:1.1;font-weight:800;letter-spacing:-.04em;margin-top:14px}
+  #s2-quote em{font-style:normal;color:#1f6b45}
+  #s2-list{margin-top:34px;display:flex;flex-direction:column;gap:0}
+  #s2-list .row{display:flex;align-items:center;gap:20px;padding:22px 0;border-bottom:1px solid #ecebe6}
+  #s2-list .row .d{width:14px;height:14px;border-radius:50%;background:#1f6b45;opacity:.8;flex:none}
+  #s2-list .row .t{font-size:33px;font-weight:600;letter-spacing:-.02em}
+  #s2-list .row .v{margin-left:auto;font-size:28px;font-weight:600;color:#9b9a93;letter-spacing:.06em;font-variant-numeric:tabular-nums}
+  #s2-mark{width:118px;height:118px;border-radius:50%;flex:none;
+    border:3px solid #e3e1da;display:flex;align-items:center;justify-content:center;
+    font-size:36px;font-weight:800;color:#cfccc2;letter-spacing:-.03em;transform:rotate(-9deg)}
+  #s2-price{margin-top:auto;display:flex;align-items:center;justify-content:space-between;padding-bottom:8px}
+  #s2-price .v{font-size:88px;font-weight:800;letter-spacing:-.05em;line-height:1}
+  #s2-price .k{font-size:28px;font-weight:600;color:#9b9a93;margin-top:6px;letter-spacing:.06em}
+</style>
+
+<div id="root" data-composition-id="s2" data-width="1920" data-height="1080">
+  <div class="book-scene">
+    <div class="ground" data-layout-ignore="true"></div>
+    <div class="grain" data-layout-ignore="true"></div>
+
+    <div id="s2-clip-page" class="clip" data-start="0" data-duration="2.6" data-track-index="1" data-layout-allow-overflow>
+      <div class="stage">
+        <div id="s2-spread" class="spread">
+          <!-- PAGE DE GAUCHE -->
+          <div class="pg left">
+            <div class="runhead"><span>Léo et Léa</span><span>Chapitre 01</span></div>
+            <div class="hairline"></div>
+            <div class="content">
+              <div id="s2-chap">Chapitre</div>
+              <div id="s2-chapnum">01</div>
+              <div id="s2-h">Une pièce,<br>deux envies.</div>
+              <div id="s2-p">Léo et Léa<br>décident ensemble.</div>
+              <div id="s2-art">
+                <div id="s2-arc"></div>
+                <div id="s2-coin" class="coin">€</div>
+                <div id="b-leo" class="kid"><div class="hair"></div><div class="head"></div><div class="body"></div></div>
+                <div id="b-lea" class="kid"><div class="hair"></div><div class="head"></div><div class="body"></div></div>
+              </div>
+            </div>
+            <div class="pnum" data-layout-ignore="true">12</div>
+          </div>
+
+          <!-- PAGE DE DROITE -->
+          <div class="pg right">
+            <div class="runhead"><span>Mon argent, mes choix</span><span>Page 13</span></div>
+            <div class="hairline"></div>
+            <div class="content">
+              <div id="s2-quote">Apprendre à choisir,<br><em>pas à se priver.</em></div>
+              <div id="s2-list">
+                <div class="row"><span class="d" data-layout-ignore="true"></span><span class="t">Une histoire par question</span><span class="v">×10</span></div>
+                <div class="row"><span class="d" data-layout-ignore="true"></span><span class="t">Un défi à la fin</span><span class="v">×10</span></div>
+                <div class="row"><span class="d" data-layout-ignore="true"></span><span class="t">Un choix à faire</span><span class="v">à toi</span></div>
+              </div>
+              <div id="s2-price">
+                <div>
+                  <div class="v">67</div>
+                  <div class="k">PAGES · BROCHÉ</div>
+                </div>
+                <div id="s2-mark" data-layout-ignore="true">8–12</div>
+              </div>
+            </div>
+            <div class="pnum" data-layout-ignore="true">13</div>
+          </div>
+
+          <div class="gutter" data-layout-ignore="true"></div>
+          <div class="curler" data-layout-ignore="true"></div>
+
+          <!-- page qui vient de se tourner -->
+          <div id="s2-turner" class="turner" data-layout-ignore="true"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var tl = gsap.timeline({ paused:true });
+
+  /* le livre atterrit déjà ouvert : la page de droite finit de se tourner */
+  tl.set('#s2-turner',{rotateY:-78,transformPerspective:2400,transformOrigin:'left center'},0);
+  tl.fromTo('#s2-spread',{scale:.965,y:26,opacity:0},{scale:1,y:0,opacity:1,duration:.5,ease:'power3.out'},0);
+  tl.fromTo('#s2-turner',{rotateY:-78},{rotateY:0,duration:.62,ease:'power3.out'},0.04);
+  tl.to('#s2-turner',{opacity:0,duration:.18,ease:'power2.in'},0.62);
+
+  /* contenu de la page gauche */
+  tl.fromTo('#s2-chap',{opacity:.2},{opacity:1,duration:.3,ease:'power2.out'},0.12);
+  tl.fromTo('#s2-chapnum',{opacity:.2,x:-14},{opacity:1,x:0,duration:.42,ease:'power3.out'},0.14);
+  tl.fromTo('#s2-h',{opacity:.15,y:22},{opacity:1,y:0,duration:.5,ease:'power3.out'},0.24);
+  tl.fromTo('#s2-p',{opacity:0,y:16},{opacity:1,y:0,duration:.36,ease:'power3.out'},0.24);
+  tl.fromTo('#s2-art .kid',{opacity:.2,y:24},{opacity:1,y:0,duration:.55,stagger:.1,ease:'power3.out'},0.5);
+  tl.fromTo('#s2-arc',{opacity:0,scaleX:.7,transformOrigin:'center'},{opacity:1,scaleX:1,duration:.5,ease:'power2.out'},0.6);
+  tl.fromTo('#s2-coin',{scale:.4,rotate:-30,y:-24},{scale:1,rotate:0,y:0,duration:.55,ease:'back.out(1.7)'},0.66);
+
+  /* page de droite */
+  tl.fromTo('#s2-quote',{opacity:.15,y:20},{opacity:1,y:0,duration:.5,ease:'power3.out'},0.34);
+  tl.fromTo('#s2-list .row',{opacity:0,x:26},{opacity:1,x:0,duration:.4,stagger:.09,ease:'power3.out'},0.56);
+  tl.fromTo('#s2-mark',{opacity:0,scale:.6,rotate:-20},{opacity:1,scale:1,rotate:-9,duration:.45,ease:'back.out(1.5)'},0.8);
+  tl.fromTo('#s2-price',{opacity:.2,y:16},{opacity:1,y:0,duration:.42,ease:'power3.out'},0.76);
+
+  /* sortie : la page se soulève */
+  tl.to('#s2-spread',{scale:.985,y:-18,opacity:0,duration:.24,ease:'power3.in'},2.34);
+
+  window.__timelines['s2'] = tl;
+})();
+</script>
+</template>

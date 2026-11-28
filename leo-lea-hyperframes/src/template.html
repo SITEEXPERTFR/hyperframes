@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920, height=1080" />
+<title>Léo et Léa — mon argent, mes choix, mon avenir · HyperFrames 20s</title>
+<script>/*__GSAP_INLINE__*/</script>
+<style>
+  @font-face{font-family:"Inter LL";src:url("assets/fonts/inter-latin-400-normal.woff2") format("woff2");font-weight:400;font-display:block}
+  @font-face{font-family:"Inter LL";src:url("assets/fonts/inter-latin-600-normal.woff2") format("woff2");font-weight:600;font-display:block}
+  @font-face{font-family:"Inter LL";src:url("assets/fonts/inter-latin-800-normal.woff2") format("woff2");font-weight:800;font-display:block}
+  :root{--paper:#fafaf9;--ink:#121211;--muted:#575752;--emerald:#1f6b45;--mint:#e8f6ee;--dot:#0ac26a;--line:#e7e7e4;--coin:#ffbe0c;--blue:#00a0fe;--violet:#8338eb;--magenta:#ff006e}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1920px;height:1080px;overflow:hidden;background:var(--paper)}
+  #root{position:relative;isolation:isolate;width:1920px;height:1080px;overflow:hidden;background:var(--paper);font-family:"Inter LL",Inter,sans-serif;color:var(--ink)}
+  .clip{position:absolute}
+  .layer{left:0;top:0;width:100%;height:100%}
+  .tabular{font-variant-numeric:tabular-nums}
+  .scene{opacity:0}
+  #daylight{background:linear-gradient(180deg,#ffffff 0%,#f7f7f5 58%,#fafaf9 100%)}
+  #grid{background-image:radial-gradient(rgba(231,231,228,.55) 1.15px,transparent 1.15px);background-size:36px 36px;background-position:0 0}
+  #vignette{pointer-events:none;background:radial-gradient(ellipse at 50% 42%,transparent 56%,rgba(18,18,17,.06) 100%)}
+  .eyebrow{font-size:28px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .chip{height:60px;padding:0 26px;border-radius:999px;background:var(--mint);color:var(--emerald);font-size:30px;font-weight:600;display:inline-flex;align-items:center;gap:12px;white-space:nowrap}
+  .gdot{width:12px;height:12px;border-radius:50%;background:var(--dot);box-shadow:0 0 0 4px rgba(10,194,106,.14);flex:none}
+  .rule{height:1px;background:rgba(18,18,17,.10)}
+
+  /* ---------- cover plate (objet livre typographique, pas un faux screenshot) ---------- */
+  .cover{position:relative;width:100%;height:100%;border-radius:10px;background:#fff;overflow:hidden;border:1px solid rgba(18,18,17,.10);
+    box-shadow:0 60px 130px rgba(18,18,17,.26),0 10px 30px rgba(18,18,17,.14),inset 0 1px 0 rgba(255,255,255,.9);transform-style:preserve-3d}
+  .cover .spine{position:absolute;left:0;top:0;width:22px;height:100%;background:linear-gradient(90deg,rgba(18,18,17,.10),rgba(18,18,17,0));z-index:4}
+  .cover .pages{position:absolute;right:0;top:10px;width:8px;height:calc(100% - 20px);background:repeating-linear-gradient(180deg,rgba(18,18,17,.10) 0 2px,transparent 2px 5px);border-radius:0 6px 6px 0}
+  .cover .face{position:absolute;inset:0;padding:52px 46px;display:flex;flex-direction:column}
+  .cover .mark{width:56px;height:56px;border-radius:16px;background:var(--emerald);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:24px;letter-spacing:-.02em}
+  .cover h1{font-size:74px;line-height:.98;font-weight:800;letter-spacing:-.045em;margin-top:34px}
+  .cover h1 em{font-style:normal;color:var(--emerald)}
+  .cover .sub{font-size:30px;font-weight:800;letter-spacing:-.03em;margin-top:24px;line-height:1.14;text-transform:uppercase}
+  .cover .lede{font-size:26px;line-height:1.28;color:var(--muted);margin-top:auto;font-weight:400}
+  .cover .author{font-size:26px;font-weight:600;letter-spacing:-.01em;margin-top:16px}
+  .cover .coins{position:absolute;right:-24px;top:186px;width:180px;height:180px}
+  .cover .coins i{position:absolute;border-radius:50%;background:var(--coin);box-shadow:0 10px 24px rgba(255,190,12,.38)}
+  .cover .coins i:nth-child(1){width:76px;height:76px;right:0;top:0;opacity:.95}
+  .cover .coins i:nth-child(2){width:44px;height:44px;right:70px;top:58px;opacity:.75}
+  .cover .coins i:nth-child(3){width:26px;height:26px;right:14px;top:96px;opacity:.55}
+  #cover-hero{left:1168px;top:172px;width:470px;height:660px;perspective:1800px;transform-style:preserve-3d}
+
+  /* ---------- S1 ---------- */
+  #s1-eyebrow{left:142px;top:196px}
+  #headline{left:140px;top:276px;width:1000px;font-size:112px;line-height:.97;font-weight:800;letter-spacing:-.045em;opacity:.55}
+  #headline .em{color:var(--emerald)}
+  #subline{left:142px;top:646px;width:900px;font-size:36px;line-height:1.3;font-weight:400;color:var(--muted);opacity:0}
+  #chips{left:140px;top:766px;display:flex;gap:16px;opacity:0}
+
+  /* ---------- S2 · 10 leçons ---------- */
+  #s2-head{left:0;top:132px;width:100%;text-align:center;font-size:76px;font-weight:800;letter-spacing:-.045em;opacity:0}
+  #s2-sub{left:0;top:230px;width:100%;text-align:center;font-size:32px;font-weight:600;color:var(--muted);letter-spacing:-.01em;opacity:0}
+  .lesson{width:300px;height:280px;border-radius:20px;background:rgba(255,255,255,.86);border:1px solid rgba(18,18,17,.10);
+    box-shadow:0 26px 60px rgba(18,18,17,.10),inset 0 1px 0 #fff;padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;opacity:0}
+  .lesson .num{font-size:54px;font-weight:800;letter-spacing:-.04em;color:var(--emerald);opacity:.9}
+  .lesson .lab{font-size:32px;font-weight:600;line-height:1.14;letter-spacing:-.02em}
+  .lesson .bar{height:8px;border-radius:99px;width:52px;background:rgba(18,18,17,.14);opacity:0}
+  .lesson:nth-child(3n) .bar{background:var(--coin)}
+  .lesson:nth-child(4n) .bar{background:var(--blue)}
+
+  /* ---------- S3 · besoin / envie ---------- */
+  #s3-head{left:0;top:148px;width:100%;text-align:center;font-size:84px;font-weight:800;letter-spacing:-.045em;opacity:0}
+  .panel{top:330px;width:760px;height:548px;border-radius:26px;padding:44px 46px;opacity:0;
+    background:rgba(255,255,255,.9);border:1px solid rgba(18,18,17,.10);box-shadow:0 40px 90px rgba(18,18,17,.13),inset 0 1px 0 #fff}
+  .panel h3{font-size:64px;font-weight:800;letter-spacing:-.045em;line-height:1}
+  .panel .kicker{font-size:30px;font-weight:600;color:var(--muted);margin-top:14px;letter-spacing:-.01em}
+  .panel ul{list-style:none;margin-top:34px;display:flex;flex-direction:column;gap:18px}
+  .panel li{font-size:34px;font-weight:600;letter-spacing:-.02em;display:flex;align-items:center;gap:16px}
+  .panel li b{width:12px;height:12px;border-radius:50%;flex:none;background:rgba(18,18,17,.22)}
+  #p-need{left:140px;border-top:6px solid var(--emerald)}
+  #p-need h3{color:var(--emerald)}
+  #p-need li b{background:var(--dot)}
+  #p-want{left:1020px;border-top:6px solid var(--coin)}
+  #p-want h3{color:#a87600}
+  #p-want li b{background:var(--coin)}
+  #s3-pill{left:840px;top:900px;opacity:0}
+
+  /* ---------- S4 · 3 enveloppes ---------- */
+  #s4-head{left:0;top:140px;width:100%;text-align:center;font-size:84px;font-weight:800;letter-spacing:-.045em;opacity:0}
+  #s4-sub{left:0;top:246px;width:100%;text-align:center;font-size:32px;font-weight:600;color:var(--muted);opacity:0}
+  .env{top:346px;width:420px;height:560px;border-radius:24px;background:rgba(255,255,255,.82);border:1px solid rgba(18,18,17,.10);
+    box-shadow:0 30px 70px rgba(18,18,17,.11),inset 0 1px 0 #fff;overflow:hidden;opacity:0}
+  .env .fill{position:absolute;left:0;right:0;bottom:0;height:0}
+  .env .top{position:absolute;left:0;right:0;top:0;padding:30px 30px 0;z-index:3}
+  .env .top .k{font-size:28px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .env .top .v{font-size:52px;font-weight:800;letter-spacing:-.04em;margin-top:10px;line-height:1.02}
+  .env .top .hint{font-size:28px;font-weight:400;color:var(--muted);margin-top:12px;line-height:1.3}
+  #env-a{left:250px}#env-b{left:750px}#env-c{left:1250px}
+  #env-a .fill{background:linear-gradient(180deg,rgba(255,190,12,.30),rgba(255,190,12,.62))}
+  #env-b .fill{background:linear-gradient(180deg,rgba(10,194,106,.24),rgba(31,107,69,.55))}
+  #env-c .fill{background:linear-gradient(180deg,rgba(0,160,254,.20),rgba(131,56,235,.40))}
+
+  /* ---------- S5 · épargne projet ---------- */
+  #s5-head{left:0;top:150px;width:100%;text-align:center;font-size:84px;font-weight:800;letter-spacing:-.045em;opacity:0}
+  #s5-sub{left:0;top:256px;width:100%;text-align:center;font-size:32px;font-weight:600;color:var(--muted);opacity:0}
+  #jar{left:566px;top:392px;width:490px;height:490px;border-radius:34px;border:3px solid rgba(18,18,17,.16);background:rgba(255,255,255,.72);
+    overflow:hidden;box-shadow:0 34px 80px rgba(18,18,17,.12),inset 0 1px 0 #fff;opacity:0}
+  #jar .water{position:absolute;left:0;right:0;bottom:0;height:0;background:linear-gradient(180deg,rgba(219,244,230,.95),rgba(10,194,106,.46))}
+  #jar .goal{position:absolute;left:22px;right:22px;top:26px;height:58px;border-radius:14px;background:var(--mint);color:var(--emerald);
+    font-size:28px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:12px;z-index:3}
+  #s5-side{left:1150px;top:392px;width:470px}
+  #s5-side .row{display:flex;align-items:center;gap:16px;padding:20px 0}
+  #s5-side .row i{width:14px;height:14px;border-radius:50%;background:var(--dot);flex:none}
+  #s5-side .row span{font-size:34px;font-weight:600;letter-spacing:-.02em}
+  #s5-note{left:1150px;top:618px;width:470px;font-size:30px;line-height:1.4;color:var(--muted);opacity:0}
+
+  /* ---------- S6 · réfléchir ---------- */
+  #s6-head{left:0;top:232px;width:100%;text-align:center;font-size:88px;font-weight:800;letter-spacing:-.05em;opacity:0}
+  #s6-flow{left:0;top:492px;width:100%;height:200px}
+  .step{top:0;height:184px;width:420px;border-radius:26px;background:#fff;border:1px solid rgba(18,18,17,.10);
+    box-shadow:0 30px 70px rgba(18,18,17,.12),inset 0 1px 0 #fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;opacity:0}
+  .step .n{font-size:28px;font-weight:600;letter-spacing:.14em;color:var(--muted)}
+  .step .t{font-size:46px;font-weight:800;letter-spacing:-.04em}
+  #st1{left:210px}#st1 .t{color:#a87600}
+  #st2{left:750px}#st2 .t{color:var(--ink)}
+  #st3{left:1290px}#st3 .t{color:var(--emerald)}
+  .arrow{top:76px;width:96px;height:32px;opacity:0}
+  .arrow svg{width:100%;height:100%;stroke:rgba(18,18,17,.30);stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  #ar1{left:648px}#ar2{left:1188px}
+  #s6-sub{left:0;top:740px;width:100%;text-align:center;font-size:34px;font-weight:400;color:var(--muted);opacity:0}
+
+  /* ---------- S7 · facts ---------- */
+  #s7-head{left:0;top:206px;width:100%;text-align:center;font-size:76px;font-weight:800;letter-spacing:-.045em;opacity:0}
+  #s7-stats{left:0;top:372px;width:100%;height:300px}
+  .stat{top:0;width:380px;height:290px;border-radius:24px;background:rgba(255,255,255,.88);border:1px solid rgba(18,18,17,.10);
+    box-shadow:0 26px 60px rgba(18,18,17,.10),inset 0 1px 0 #fff;padding:34px 32px;display:flex;flex-direction:column;justify-content:space-between;opacity:0}
+  .stat .v{font-size:84px;font-weight:800;letter-spacing:-.05em;line-height:.92}
+  .stat .k{font-size:30px;font-weight:600;color:var(--muted);letter-spacing:-.01em}
+  #st-a{left:140px}#st-b{left:566px}#st-c{left:992px}#st-d{left:1418px}
+  #st-a .v{color:var(--emerald)}#st-d .v{font-size:64px}
+  #s7-author{left:0;top:686px;width:100%;text-align:center;font-size:34px;font-weight:600;letter-spacing:-.01em;opacity:0}
+  #s7-author span{color:var(--muted);font-weight:400}
+  #s7-foot{left:0;top:752px;width:100%;text-align:center;font-size:30px;color:var(--muted);opacity:0}
+
+  /* ---------- S8 · outro ---------- */
+  #s8-cover{left:236px;top:250px;width:320px;height:450px;perspective:1800px}
+  #s8-cover .cover .face{padding:30px 26px}
+  #s8-cover .cover h1{font-size:48px;margin-top:18px}
+  #s8-cover .cover .sub{font-size:20px;margin-top:14px}
+  #s8-cover .cover .lede{font-size:20px}
+  #s8-cover .cover .author{font-size:20px;margin-top:10px}
+  #s8-cover .cover .mark{width:38px;height:38px;border-radius:11px;font-size:16px}
+  #s8-cover .cover .coins{width:120px;height:120px;top:116px}
+  #s8-cover .cover .coins i:nth-child(1){width:52px;height:52px}
+  #s8-cover .cover .coins i:nth-child(2){width:30px;height:30px;right:48px;top:40px}
+  #s8-cover .cover .coins i:nth-child(3){width:18px;height:18px;right:8px;top:66px}
+  #s8-copy{left:690px;top:262px;width:1020px}
+  #s8-kicker{font-size:28px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);opacity:0;white-space:nowrap}
+  #s8-word{font-size:100px;font-weight:800;letter-spacing:-.05em;line-height:1;margin-top:18px;opacity:0}
+  #s8-word em{font-style:normal;color:var(--emerald)}
+  #s8-title{font-size:40px;font-weight:600;letter-spacing:-.02em;margin-top:22px;opacity:0}
+  #s8-proof{font-size:30px;font-weight:400;color:var(--muted);margin-top:14px;opacity:0}
+  #s8-cta{position:absolute;left:0;top:0;height:80px;padding:0 34px;border-radius:999px;background:var(--emerald);color:#fff;font-size:32px;font-weight:600;
+    display:flex;align-items:center;gap:16px;box-shadow:0 22px 50px rgba(31,107,69,.28);opacity:0}
+  #s8-cta svg{width:28px;height:28px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  #s8-asin{font-size:28px;letter-spacing:.02em;color:var(--muted);margin-top:22px;opacity:0}
+  #hold{left:0;top:0;width:1px;height:1px;opacity:0;pointer-events:none}
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="20" data-fps="60" data-width="1920" data-height="1080" data-layout-allow-overflow data-layout-allow-overlap>
+  <audio id="sound" src="assets/audio/leo-lea.wav" data-start="0" data-duration="20" data-track-index="9" data-volume="0.92" data-fade-in="0.02" data-fade-out="0.16"></audio>
+
+  <div id="daylight" class="clip layer" data-layout-allow-occlusion data-start="0" data-duration="20" data-track-index="0"></div>
+  <div id="grid" class="clip layer" data-layout-allow-occlusion data-start="0" data-duration="20" data-track-index="0"></div>
+
+  <!-- ============ 0.00 → 2.10 · HOOK ============ -->
+  <div id="s1" class="clip layer scene" data-layout-allow-overlap data-layout-allow-occlusion data-start="0" data-duration="2.1" data-track-index="1">
+    <div id="s1-eyebrow" class="eyebrow clip" data-layout-allow-overlap>Éducation financière · 8–12 ans</div>
+    <div id="headline" class="clip" data-layout-allow-overlap data-layout-allow-occlusion>MON ARGENT.<br>MES CHOIX.<br><span class="em">MON AVENIR.</span></div>
+    <div id="subline" class="clip" data-layout-allow-overlap data-layout-allow-occlusion>Budget · épargne · projets</div>
+    <div id="chips" class="clip" data-layout-allow-overlap data-layout-allow-occlusion>
+      <span class="chip"><span class="gdot" data-layout-ignore="true"></span>10 histoires</span>
+      <span class="chip"><span class="gdot" data-layout-ignore="true"></span>10 leçons</span>
+    </div>
+  </div>
+
+  <!-- cover plate héro -->
+  <div id="cover-hero" class="clip" data-layout-allow-overlap data-layout-allow-occlusion data-start="0" data-duration="2.1" data-track-index="2">
+    <div class="cover">
+      <div class="spine" data-layout-ignore="true"></div>
+      <div class="pages" data-layout-ignore="true"></div>
+      <div class="coins" data-layout-ignore="true"><i></i><i></i><i></i></div>
+      <div class="face" data-layout-ignore="true">
+        <div class="mark">LL</div>
+        <h1>Léo <em>et</em> Léa</h1>
+        <div class="sub">Mon argent,<br>mes choix,<br>mon avenir</div>
+        <div class="lede">10 histoires pour bien gérer son argent.</div>
+        <div class="author">Andréa E. AMOS</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 2.10 → 5.10 · 10 LECONS ============ -->
+  <div id="s2" class="clip layer scene" data-layout-allow-overlap data-layout-allow-occlusion data-start="2.1" data-duration="3" data-track-index="3">
+    <div id="s2-head" class="clip" data-layout-allow-overlap data-layout-allow-occlusion>10 histoires. 10 leçons.</div>
+    <div id="s2-sub" class="clip" data-layout-allow-overlap data-layout-allow-occlusion>Des leçons concrètes.</div>
+    <div id="lesson-1" class="clip lesson" data-layout-allow-overlap style="left:138px;top:330px"><div class="num tabular">01</div><div class="lab">Besoins<br>ou envies</div><div class="bar" data-layout-ignore="true"></div></div>
+    <div id="lesson-2" class="clip lesson" data-layout-allow-overlap style="left:474px;top:330px"><div class="num tabular">02</div><div class="lab">Tenir<br>un budget</div><div class="bar" data-layout-ignore="true"></div></div>
+    <div id="lesson-3" class="clip lesson" data-layout-allow-overlap style="left:810px;top:330px"><div class="num tabular">03</div><div class="lab">Épargner<br>sans effort</div><div class="bar" data-layout-ignore="true"></div></div>
+    <div id="lesson-4" class="clip lesson" data-layout-allow-overlap style="left:1146px;top:330px"><div class="num tabular">04</div><div class="lab">Financer<br>un projet</div><div class="bar" data-layout-ignore="true"></div></div>
+    <div id="lesson-5" class="clip lesson" data-layout-allow-overlap style="left:1482px;top:330px"><div class="num tabular">05</div><div class="lab">Comparer<br>les prix</div><div class="bar" data-layout-ignore="true"></div></div>
+    <div id="lesson-6" class="clip lesson" data-layout-allow-overlap style="left:138px;top:646px"><div class="num tabular">06</div><div class="lab">Éviter<br>l'impulsion</div><div class="bar" data-layout-ignore="true"></div></div>
+    <div id="lesson-7" class="clip lesson" data-layout-allow-overlap style="left:474px;top:646px"><div class="num tabular">07</div><div class="lab">La valeur<br>du travail</div><div class="bar" data-layout-ignore="true"></div></div>
+    <div id="lesson-8" class="clip lesson" data-layout-allow-overlap style="left:810px;top:646px"><div class="num tabular">08</div><div class="lab">Le<br>partage</div><div class="bar" data-layout-ignore="true"></div></div>
+    <div id="lesson-9" class="clip lesson" data-layout-allow-overlap style="left:1146px;top:646px"><div class="num tabular">09</div><div class="lab">Réfléchir<br>avant</div><div class="bar" data-layout-ignore="true"></div></div>
+    <div id="lesson-10" class="clip lesson" data-layout-allow-overlap style="left:1482px;top:646px"><div class="num tabular">10</div><div class="lab">Petits<br>défis</div><div class="bar" data-layout-ignore="true"></div></div>
+  </div>
+
+  <!-- ============ 5.10 → 8.10 · BESOIN / ENVIE ============ -->
+  <div id="s3" class="clip layer scene" data-layout-allow-overlap data-layout-allow-occlusion data-start="5.1" data-duration="3" data-track-index="4">
+    <div id="s3-head" class="clip" data-layout-allow-overlap data-layout-allow-occlusion>Besoin ou envie ?</div>
+    <div id="p-need" class="clip panel" data-layout-allow-overlap data-layout-allow-occlusion>
+      <h3>BESOIN</h3>
+      <div class="kicker">Ce qui est nécessaire.</div>
+      <ul><li><b data-layout-ignore="true"></b>Il me faut maintenant</li><li><b data-layout-ignore="true"></b>Ça me sert vraiment</li><li><b data-layout-ignore="true"></b>Je ne peux pas reporter</li></ul>
+    </div>
+    <div id="p-want" class="clip panel" data-layout-allow-overlap data-layout-allow-occlusion>
+      <h3>ENVIE</h3>
+      <div class="kicker">Ce qui fait plaisir.</div>
+      <ul><li><b data-layout-ignore="true"></b>J'en ai envie vite</li><li><b data-layout-ignore="true"></b>Ça peut attendre</li><li><b data-layout-ignore="true"></b>Je peux y réfléchir</li></ul>
+    </div>
+    <div id="s3-pill" class="clip chip" data-layout-allow-overlap data-layout-allow-occlusion><span class="gdot" data-layout-ignore="true"></span>Trier avant de dépenser.</div>
+  </div>
+
+  <!-- ============ 8.10 → 11.10 · 3 ENVELOPPES ============ -->
+  <div id="s4" class="clip layer scene" data-layout-allow-overlap data-layout-allow-occlusion data-start="8.1" data-duration="3" data-track-index="5">
+    <div id="s4-head" class="clip" data-layout-allow-overlap data-layout-allow-occlusion>3 enveloppes, 1 budget.</div>
+    <div id="s4-sub" class="clip" data-layout-allow-overlap data-layout-allow-occlusion>Ranger avant de dépenser.</div>
+    <div id="env-a" class="clip env" data-layout-allow-overlap data-layout-allow-occlusion>
+      <div class="fill" data-layout-ignore="true"></div>
+      <div class="top" data-layout-allow-overlap><div class="k">Dépenser</div><div class="v">Le quotidien</div><div class="hint">Goûters, sorties, petits plaisirs.</div></div>
+    </div>
+    <div id="env-b" class="clip env" data-layout-allow-overlap data-layout-allow-occlusion>
+      <div class="fill" data-layout-ignore="true"></div>
+      <div class="top" data-layout-allow-overlap><div class="k">Épargner</div><div class="v">Le projet</div><div class="hint">Ce que je garde pour plus tard.</div></div>
+    </div>
+    <div id="env-c" class="clip env" data-layout-allow-overlap data-layout-allow-occlusion>
+      <div class="fill" data-layout-ignore="true"></div>
+      <div class="top" data-layout-allow-overlap><div class="k">Partager</div><div class="v">Les autres</div><div class="hint">Un cadeau, un coup de main.</div></div>
+    </div>
+  </div>
+
+  <!-- ============ 11.10 → 14.10 · ÉPARGNER ============ -->
+  <div id="s5" class="clip layer scene" data-layout-allow-overlap data-layout-allow-occlusion data-start="11.1" data-duration="2.5" data-track-index="6">
+    <div id="s5-head" class="clip" data-layout-allow-overlap data-layout-allow-occlusion>Un objectif, un cap.</div>
+    <div id="s5-sub" class="clip" data-layout-allow-overlap data-layout-allow-occlusion>Un cap clair change tout.</div>
+    <div id="jar" class="clip" data-layout-allow-overlap data-layout-allow-occlusion>
+      <div class="goal" data-layout-allow-overlap><span class="gdot" data-layout-ignore="true"></span>Mon projet</div>
+      <div class="water" data-layout-ignore="true"></div>
+    </div>
+    <div id="s5-side" class="clip" data-layout-allow-overlap data-layout-allow-occlusion>
+      <div class="row"><i data-layout-ignore="true"></i><span>Je choisis le projet</span></div>
+      <div class="rule" data-layout-ignore="true"></div>
+      <div class="row"><i data-layout-ignore="true"></i><span>Je mets de côté</span></div>
+      <div class="rule" data-layout-ignore="true"></div>
+      <div class="row"><i data-layout-ignore="true"></i><span>Je vois le progrès</span></div>
+    </div>
+    <div id="s5-note" class="clip" data-layout-allow-overlap data-layout-allow-occlusion>Régulier. Pas spectaculaire.</div>
+  </div>
+
+  <!-- ============ 14.10 → 16.10 · RÉFLÉCHIR ============ -->
+  <div id="s6" class="clip layer scene" data-layout-allow-overlap data-layout-allow-occlusion data-start="13.6" data-duration="1.8" data-track-index="7">
+    <div id="s6-head" class="clip" data-layout-allow-overlap data-layout-allow-occlusion>Et si j'attendais ?</div>
+    <div id="s6-flow" class="clip" data-layout-allow-overlap data-layout-allow-occlusion>
+      <div id="st1" class="clip step" data-layout-allow-overlap><div class="n">01</div><div class="t">L'ENVIE</div></div>
+      <div id="ar1" class="clip arrow" data-layout-ignore="true"><svg viewBox="0 0 96 32"><path d="M2 16h80M70 6l14 10-14 10"/></svg></div>
+      <div id="st2" class="clip step" data-layout-allow-overlap><div class="n">02</div><div class="t">LA PAUSE</div></div>
+      <div id="ar2" class="clip arrow" data-layout-ignore="true"><svg viewBox="0 0 96 32"><path d="M2 16h80M70 6l14 10-14 10"/></svg></div>
+      <div id="st3" class="clip step" data-layout-allow-overlap><div class="n">03</div><div class="t">LE CHOIX</div></div>
+    </div>
+  </div>
+
+  <!-- ============ 16.10 → 18.10 · FACTS ============ -->
+  <div id="s7" class="clip layer scene" data-layout-allow-overlap data-layout-allow-occlusion data-start="15.4" data-duration="2" data-track-index="8">
+    <div id="s7-head" class="clip" data-layout-allow-overlap data-layout-allow-occlusion>Pensé pour les 8–12 ans.</div>
+    <div id="s7-stats" class="clip" data-layout-allow-overlap data-layout-allow-occlusion style="top:372px">
+      <div id="st-a" class="clip stat" data-layout-allow-overlap><div class="v tabular">10</div><div class="k">histoires illustrées</div></div>
+      <div id="st-b" class="clip stat" data-layout-allow-overlap><div class="v tabular">67</div><div class="k">pages, broché</div></div>
+      <div id="st-c" class="clip stat" data-layout-allow-overlap><div class="v tabular">8–12</div><div class="k">ans, lecture aidée</div></div>
+      <div id="st-d" class="clip stat" data-layout-allow-overlap><div class="v">FR</div><div class="k">écrit en français</div></div>
+    </div>
+  </div>
+
+  <!-- ============ 18.10 → 20.00 · OUTRO ============ -->
+  <div id="s8" class="clip layer scene" data-layout-allow-overlap data-layout-allow-occlusion data-start="17.4" data-duration="2.6" data-track-index="10">
+    <div id="s8-cover" class="clip" data-layout-allow-overlap data-layout-allow-occlusion>
+      <div class="cover">
+        <div class="spine" data-layout-ignore="true"></div>
+        <div class="pages" data-layout-ignore="true"></div>
+        <div class="coins" data-layout-ignore="true"><i></i><i></i><i></i></div>
+        <div class="face" data-layout-ignore="true">
+          <div class="mark">LL</div>
+          <h1>Léo <em>et</em> Léa</h1>
+          <div class="sub">Mon argent,<br>mes choix,<br>mon avenir</div>
+          <div class="lede">10 histoires pour bien gérer son argent.</div>
+          <div class="author">Andréa E. AMOS</div>
+        </div>
+      </div>
+    </div>
+    <div id="s8-copy" class="clip" data-layout-allow-overlap data-layout-allow-occlusion>
+      <div id="s8-kicker">Andréa E. AMOS · dès 8 ans</div>
+      <div id="s8-word">Léo <em>et</em> Léa</div>
+      <div id="s8-title">Mon argent, mes choix, mon avenir</div>
+      <div id="s8-proof">10 histoires · 10 leçons · défis.</div>
+      <div style="position:relative;height:100px;margin-top:34px">
+        <div id="s8-cta">Disponible sur Amazon.fr<svg viewBox="0 0 24 24" data-layout-ignore="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></div>
+      </div>
+      <div id="s8-asin" class="tabular">amazon.fr · B0HPJ2T1C3</div>
+    </div>
+  </div>
+
+  <div id="vignette" class="clip layer" data-layout-allow-occlusion data-start="0" data-duration="20" data-track-index="11"></div>
+  <div id="lever" class="clip" data-layout-ignore="true" data-start="0" data-duration="20" data-track-index="11" style="left:1150px;top:700px;width:470px;text-align:left">
+    <span style="display:inline-block;height:62px;padding:0 26px;border-radius:999px;background:rgba(31,107,69,.08);color:var(--emerald);font-size:30px;font-weight:600;line-height:62px;opacity:0">de 60 à 67 pages</span>
+  </div>
+  <div id="hold" class="clip" data-layout-ignore="true" data-start="0" data-duration="20" data-track-index="11"></div>
+</div>
+
+<script>
+(function(){
+  var tl = gsap.timeline({ paused:true });
+  var EASE = 'expo.out';
+  var lessons = Array.prototype.slice.call(document.querySelectorAll('.lesson'));
+
+  /* ambiance déterministe sur toute la durée */
+  tl.to('#grid',{backgroundPosition:'-40px -30px',duration:20,ease:'none'},0);
+  tl.fromTo('#daylight',{opacity:1},{opacity:.95,duration:20,ease:'none'},0);
+
+  /* ---------- S1 : 0.00 → 2.10 ---------- */
+  tl.set('#s1',{opacity:1},0);
+  tl.set('#s2',{opacity:0},0); tl.set('#s3',{opacity:0},0); tl.set('#s4',{opacity:0},0);
+  tl.set('#s5',{opacity:0},0); tl.set('#s6',{opacity:0},0); tl.set('#s7',{opacity:0},0); tl.set('#s8',{opacity:0},0);
+  tl.fromTo('#s1-eyebrow',{opacity:.4,y:16},{opacity:1,y:0,duration:.42,ease:'power3.out'},0);
+  tl.fromTo('#headline',{y:44,rotateX:-12,transformPerspective:1800},{y:0,rotateX:0,duration:.62,ease:EASE},0);
+  tl.fromTo('#headline',{opacity:.55},{opacity:1,duration:.50,ease:'power2.out'},0);
+  tl.fromTo('#cover-hero',{opacity:.30,rotateY:-16,rotateX:7,x:120,y:56,scale:.9,transformPerspective:1800},
+    {opacity:1,rotateY:-6,rotateX:2,x:0,y:0,scale:1,duration:.85,ease:'power4.out'},0.10);
+  tl.fromTo('#subline',{opacity:0,y:20},{opacity:1,y:0,duration:.46,ease:'power3.out'},0.62);
+  tl.fromTo('#chips',{opacity:0,y:18},{opacity:1,y:0,duration:.44,ease:'power3.out'},0.86);
+  tl.to('#s1',{opacity:0,scale:1.05,duration:.28,ease:'power3.in'},1.80);
+  tl.set('#s1',{opacity:0,scale:1},2.10);
+  tl.to('#cover-hero',{opacity:0,x:640,rotateY:18,duration:.34,ease:'power3.in'},1.82);
+
+  /* ---------- S2 : 2.10 → 5.10 · 10 leçons ---------- */
+  tl.set('#s2',{opacity:1},2.10);
+  tl.fromTo('#s2-head',{opacity:0,y:26},{opacity:1,y:0,duration:.44,ease:EASE},2.14);
+  tl.fromTo('#s2-sub',{opacity:0,y:18},{opacity:1,y:0,duration:.38,ease:'power3.out'},2.34);
+  tl.fromTo(lessons,{opacity:0,y:54,scale:.94},{opacity:1,y:0,scale:1,duration:.42,stagger:.05,ease:EASE},2.30);
+  tl.fromTo('.lesson .bar',{width:24,opacity:0},{width:120,opacity:1,duration:.38,stagger:.05,ease:'power2.out'},2.64);
+  tl.to(lessons,{y:-16,scale:1.02,duration:.30,stagger:.025,ease:'power2.in'},4.72);
+  tl.to('#s2',{opacity:0,duration:.24,ease:'power2.in'},4.82);
+  tl.set('#s2',{opacity:0},5.10);
+
+  /* ---------- S3 : 5.10 → 8.10 · besoin / envie ---------- */
+  tl.set('#s3',{opacity:1},5.10);
+  tl.fromTo('#s3-head',{opacity:0,y:24},{opacity:1,y:0,duration:.42,ease:EASE},5.14);
+  tl.fromTo('#p-need',{opacity:0,x:-90,rotateY:8,transformPerspective:1800},{opacity:1,x:0,rotateY:0,duration:.52,ease:'power4.out'},5.26);
+  tl.fromTo('#p-want',{opacity:0,x:90,rotateY:-8,transformPerspective:1800},{opacity:1,x:0,rotateY:0,duration:.52,ease:'power4.out'},5.34);
+  tl.fromTo('#p-need li',{opacity:0,x:-24},{opacity:1,x:0,duration:.32,stagger:.07,ease:'power3.out'},5.64);
+  tl.fromTo('#p-want li',{opacity:0,x:24},{opacity:1,x:0,duration:.32,stagger:.07,ease:'power3.out'},5.72);
+  tl.fromTo('#s3-pill',{opacity:0,y:20,scale:.94},{opacity:1,y:0,scale:1,duration:.36,ease:EASE},6.28);
+  tl.to('#p-want',{boxShadow:'0 0 0 6px rgba(255,190,12,.18),0 40px 90px rgba(18,18,17,.13)',duration:.30,ease:'power2.out'},6.92);
+  tl.to('#s3',{opacity:0,y:-40,duration:.26,ease:'power2.in'},7.82);
+  tl.set('#s3',{opacity:0},8.10);
+
+  /* ---------- S4 : 8.10 → 11.10 · 3 enveloppes ---------- */
+  tl.set('#s4',{opacity:1},8.10);
+  tl.fromTo('#s4-head',{opacity:0,y:26},{opacity:1,y:0,duration:.44,ease:EASE},8.14);
+  tl.fromTo('#s4-sub',{opacity:0,y:18},{opacity:1,y:0,duration:.38,ease:'power3.out'},8.34);
+  tl.fromTo('.env',{opacity:0,y:70,scale:.96},{opacity:1,y:0,scale:1,duration:.50,stagger:.09,ease:EASE},8.42);
+  tl.fromTo('#env-a .fill',{height:'8%'},{height:'54%',duration:.85,ease:'power3.out'},8.76);
+  tl.fromTo('#env-b .fill',{height:'8%'},{height:'62%',duration:.85,ease:'power3.out'},8.90);
+  tl.fromTo('#env-c .fill',{height:'8%'},{height:'40%',duration:.85,ease:'power3.out'},9.04);
+  tl.to('#env-b .fill',{height:'70%',duration:.60,ease:'sine.inOut'},9.92);
+  tl.to('#s4',{opacity:0,y:-36,duration:.26,ease:'power2.in'},10.82);
+  tl.set('#s4',{opacity:0},11.10);
+
+  /* ---------- S5 : 11.10 → 13.60 · épargne projet ---------- */
+  tl.set('#s5',{opacity:1},11.10);
+  tl.fromTo('#s5-head',{opacity:0,y:26},{opacity:1,y:0,duration:.44,ease:EASE},11.14);
+  tl.fromTo('#s5-sub',{opacity:0,y:18},{opacity:1,y:0,duration:.38,ease:'power3.out'},11.32);
+  tl.fromTo('#jar',{opacity:0,y:60,scale:.94,rotateX:8,transformPerspective:1800},{opacity:1,y:0,scale:1,rotateX:0,duration:.62,ease:'power4.out'},11.40);
+  tl.fromTo('#jar .goal',{y:-14,opacity:0},{y:0,opacity:1,duration:.38,ease:'power3.out'},11.56);
+  tl.fromTo('#jar .water',{height:'14%'},{height:'72%',duration:1.45,ease:'power2.out'},11.60);
+  tl.fromTo('#s5-side .row',{opacity:0,x:36},{opacity:1,x:0,duration:.36,stagger:.14,ease:'power3.out'},11.70);
+  tl.fromTo('#s5-side .rule',{scaleX:0,transformOrigin:'left center'},{scaleX:1,duration:.30,stagger:.14,ease:'power2.out'},11.78);
+  tl.fromTo('#s5-note',{opacity:0,y:16},{opacity:1,y:0,duration:.42,ease:'power3.out'},12.06);
+  tl.fromTo('#lever span',{opacity:0,y:14},{opacity:1,y:0,duration:.38,ease:'power3.out'},12.46);
+  tl.to('#lever span',{opacity:0,duration:.24,ease:'power2.in'},13.10);
+  tl.to('#s5',{opacity:0,y:-34,duration:.26,ease:'power2.in'},13.34);
+  tl.set('#s5',{opacity:0},13.60);
+
+  /* ---------- S6 : 13.60 → 15.40 · réfléchir ---------- */
+  tl.set('#s6',{opacity:1},13.60);
+  tl.fromTo('#s6-head',{opacity:0,y:30,scale:.97},{opacity:1,y:0,scale:1,duration:.46,ease:EASE},13.64);
+  tl.fromTo('#st1',{opacity:0,y:40,rotateX:10,transformPerspective:1800},{opacity:1,y:0,rotateX:0,duration:.42,ease:'power4.out'},13.86);
+  tl.fromTo('#ar1',{opacity:0,scaleX:.4,transformOrigin:'left center'},{opacity:1,scaleX:1,duration:.28,ease:'power3.out'},14.04);
+  tl.fromTo('#st2',{opacity:0,y:40,rotateX:10,transformPerspective:1800},{opacity:1,y:0,rotateX:0,duration:.42,ease:'power4.out'},14.18);
+  tl.fromTo('#ar2',{opacity:0,scaleX:.4,transformOrigin:'left center'},{opacity:1,scaleX:1,duration:.28,ease:'power3.out'},14.36);
+  tl.fromTo('#st3',{opacity:0,y:40,rotateX:10,transformPerspective:1800},{opacity:1,y:0,rotateX:0,duration:.42,ease:'power4.out'},14.50);
+  tl.to('#st2',{y:-10,scale:1.03,duration:.34,ease:'sine.inOut'},14.72);
+  tl.to('#st2',{y:0,scale:1,duration:.34,ease:'sine.inOut'},15.06);
+  tl.to('#s6',{opacity:0,y:-30,duration:.26,ease:'power2.in'},15.14);
+  tl.set('#s6',{opacity:0},15.40);
+
+  /* ---------- S7 : 15.40 → 17.40 · facts ---------- */
+  tl.set('#s7',{opacity:1},15.40);
+  tl.fromTo('#s7-head',{opacity:0,y:26},{opacity:1,y:0,duration:.44,ease:EASE},15.44);
+  tl.fromTo('.stat',{opacity:0,y:46,scale:.95},{opacity:1,y:0,scale:1,duration:.44,stagger:.07,ease:EASE},15.62);
+  tl.to('#s7',{opacity:0,y:-28,duration:.26,ease:'power2.in'},17.12);
+  tl.set('#s7',{opacity:0},17.40);
+
+  /* ---------- S8 : 17.40 → 20.00 · outro ---------- */
+  tl.set('#s8',{opacity:1},17.40);
+  tl.fromTo('#s8-cover',{opacity:.4,y:44,rotateY:-12,rotateX:5,scale:.96,transformPerspective:1800},
+    {opacity:1,y:0,rotateY:-4,rotateX:0,scale:1,duration:.50,ease:'power4.out'},17.42);
+  tl.fromTo('#s8-word',{opacity:.35,y:24},{opacity:1,y:0,duration:.40,ease:EASE},17.44);
+  tl.fromTo('#s8-kicker',{opacity:0,y:14},{opacity:1,y:0,duration:.30,ease:'power3.out'},17.46);
+  tl.fromTo('#s8-title',{opacity:0,y:18},{opacity:1,y:0,duration:.34,ease:'power3.out'},17.50);
+  tl.fromTo('#s8-proof',{opacity:0,y:14},{opacity:1,y:0,duration:.32,ease:'power3.out'},17.58);
+  tl.fromTo('#s8-cta',{opacity:0,y:18,scale:.96},{opacity:1,y:0,scale:1,duration:.40,ease:'back.out(1.6)'},17.66);
+  tl.fromTo('#s8-asin',{opacity:0},{opacity:1,duration:.32,ease:'power2.out'},17.80);
+  tl.to('#hold',{opacity:1,duration:1.6,ease:'none'},18.40);
+
+  tl.seek(0);
+  window.__timelines = window.__timelines || {};
+  window.__timelines['main'] = tl;
+})();
+</script>
+</body>
+</html>

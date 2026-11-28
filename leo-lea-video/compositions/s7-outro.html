@@ -1,0 +1,125 @@
+<template>
+<link rel="stylesheet" href="../assets/book.css" />
+<style>
+  #root{position:absolute;inset:0}
+
+  /* le livre se referme et recule : objet + titre + preuve */
+  #s7-book{position:absolute;left:196px;top:200px;width:470px;height:624px;transform-style:preserve-3d}
+  #s7-board{position:absolute;inset:0;border-radius:6px 12px 12px 6px;
+    background:linear-gradient(102deg,#1f6b45 0%,#257e51 44%,#1a5c3b 100%);
+    box-shadow:0 56px 110px rgba(18,18,17,.24),0 10px 26px rgba(18,18,17,.15),inset 0 0 0 1px rgba(255,255,255,.10)}
+  #s7-board::after{content:"";position:absolute;left:0;top:0;bottom:0;width:16px;border-radius:6px 0 0 6px;
+    background:linear-gradient(90deg,rgba(0,0,0,.30),rgba(255,255,255,.07))}
+  #s7-art{position:absolute;inset:0;border-radius:6px 12px 12px 6px;overflow:hidden;background:#fffdf8}
+  #s7-in{position:absolute;inset:0;padding:32px 30px 26px;display:flex;flex-direction:column}
+  #s7-band{width:84px;height:10px;border-radius:999px;background:#1f6b45}
+  #s7-kick{font-size:28px;font-weight:600;letter-spacing:.02em;white-space:nowrap;text-transform:uppercase;color:#1f6b45;margin-top:18px}
+  #s7-name{font-size:56px;line-height:.92;font-weight:800;letter-spacing:-.048em;margin-top:10px}
+  #s7-name em{font-style:normal;color:#1f6b45}
+  #s7-sub{font-size:28px;line-height:1.06;font-weight:800;letter-spacing:-.03em;text-transform:uppercase;margin-top:14px}
+  #s7-illu{position:relative;margin-top:auto;height:186px;width:100%;margin-bottom:44px}
+  .kid{position:absolute;bottom:0;width:118px;height:198px}
+  .kid .body{position:absolute;left:50%;bottom:0;width:106px;height:118px;margin-left:-53px;border-radius:52px 52px 14px 14px}
+  .kid .head{position:absolute;left:50%;bottom:104px;width:78px;height:78px;margin-left:-39px;border-radius:50%;
+    background:#f7cbaa;box-shadow:inset -8px -9px 0 rgba(18,18,17,.05)}
+  .kid .hair{position:absolute;left:50%;bottom:146px;width:86px;height:48px;margin-left:-43px;border-radius:44px 44px 12px 12px}
+  #o-leo{left:26px}
+  #o-leo .hair{background:#4a3a2c}
+  #o-leo .body{background:#1f6b45}
+  #o-lea{left:150px}
+  #o-lea .hair{background:#2f2a26}
+  #o-lea .hair::after{content:"";position:absolute;right:-6px;top:20px;width:24px;height:70px;border-radius:12px;background:#2f2a26}
+  #o-lea .body{background:#ffbe0c}
+  #s7-coin{position:absolute;left:112px;top:0;width:70px;height:70px;font-size:32px}
+  #s7-author{position:absolute;left:34px;bottom:24px;font-size:28px;font-weight:600;color:#575752}
+  #s7-pages{position:absolute;right:-8px;top:6px;bottom:6px;width:14px;border-radius:0 8px 8px 0;
+    background:repeating-linear-gradient(180deg,#fffdf8 0 2px,#e6e3da 2px 3px);box-shadow:2px 0 8px rgba(18,18,17,.12)}
+
+  /* colonne finale */
+  #s7-copy{position:absolute;left:766px;top:252px;width:980px}
+  #s7-eyebrow{font-size:28px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#575752}
+  #s7-title{font-size:104px;line-height:1;font-weight:800;letter-spacing:-.05em;margin-top:16px}
+  #s7-title em{font-style:normal;color:#1f6b45}
+  #s7-line{font-size:40px;font-weight:600;letter-spacing:-.02em;margin-top:18px;color:#121211}
+  #s7-proof{font-size:28px;font-weight:400;color:#575752;margin-top:12px}
+  #s7-cta{position:absolute;left:0;top:0;height:78px;padding:0 32px;border-radius:999px;background:#1f6b45;color:#fff;
+    font-size:30px;font-weight:600;display:flex;align-items:center;gap:14px;box-shadow:0 20px 44px rgba(31,107,69,.26)}
+  #s7-cta svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  #s7-asin{font-size:28px;letter-spacing:.06em;color:#8d8c85;margin-top:20px}
+  #s7-note{font-size:28px;color:#a9a8a1;margin-top:10px;letter-spacing:.02em}
+</style>
+
+<div id="root" data-composition-id="s7" data-width="1920" data-height="1080">
+  <div class="book-scene">
+    <div class="ground" data-layout-ignore="true"></div>
+    <div class="grain" data-layout-ignore="true"></div>
+
+    <div id="s7-clip-book" class="clip" data-start="0" data-duration="2.4" data-track-index="1" data-layout-allow-overflow>
+      <div class="stage">
+        <div id="s7-book">
+          <div id="s7-board"></div>
+          <div id="s7-art">
+            <div id="s7-in">
+              <div id="s7-band"></div>
+              <div id="s7-kick">Éducation financière</div>
+              <div id="s7-name">Léo <em>et</em> Léa</div>
+              <div id="s7-sub">Mon argent, mes choix,<br>mon avenir</div>
+              <div id="s7-illu">
+                <div id="o-leo" class="kid"><div class="hair"></div><div class="head"></div><div class="body"></div></div>
+                <div id="o-lea" class="kid"><div class="hair"></div><div class="head"></div><div class="body"></div></div>
+                <div id="s7-coin" class="coin">€</div>
+              </div>
+              <div id="s7-author">Andréa E. AMOS</div>
+            </div>
+          </div>
+          <div id="s7-pages"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="s7-clip-copy" class="clip" data-start="0" data-duration="2.4" data-track-index="2" data-layout-allow-overlap>
+      <div class="stage">
+        <div id="s7-copy">
+          <div id="s7-eyebrow">Livre illustré · 8–12 ans</div>
+          <div id="s7-title">Léo <em>et</em> Léa</div>
+          <div id="s7-line">Mon argent, mes choix, mon avenir</div>
+          <div id="s7-proof">10 histoires · 10 défis · 67 pages</div>
+          <div style="position:relative;height:98px;margin-top:30px">
+            <div id="s7-cta">Disponible sur Amazon.fr
+              <svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+            </div>
+          </div>
+          <div id="s7-asin">amazon.fr · B0HPJ2T1C3</div>
+          <div id="s7-note">Couverture reconstituée · visuel Amazon inaccessible</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var tl = gsap.timeline({ paused:true });
+
+  /* le livre recule et se referme */
+  tl.set('#s7-book',{rotateY:-8,rotateX:3,transformPerspective:2400,transformOrigin:'50% 50%'},0);
+  tl.fromTo('#s7-book',{x:-40,y:34,scale:.94},{x:0,y:0,scale:1,duration:.6,ease:'power4.out'},0);
+  tl.fromTo('#s7-coin',{scale:.6,rotate:-26},{scale:1,rotate:0,duration:.5,ease:'back.out(1.6)'},0.18);
+  tl.fromTo('#o-leo',{opacity:.25,y:16},{opacity:1,y:0,duration:.45,ease:'power3.out'},0.1);
+  tl.fromTo('#o-lea',{opacity:.25,y:16},{opacity:1,y:0,duration:.45,ease:'power3.out'},0.16);
+
+  tl.fromTo('#s7-eyebrow',{opacity:.3},{opacity:1,duration:.3,ease:'power2.out'},0.02);
+  tl.fromTo('#s7-title',{opacity:.25,y:22},{opacity:1,y:0,duration:.44,ease:'power3.out'},0.06);
+  tl.fromTo('#s7-line',{opacity:0,y:16},{opacity:1,y:0,duration:.4,ease:'power3.out'},0.22);
+  tl.fromTo('#s7-proof',{opacity:0,y:12},{opacity:1,y:0,duration:.36,ease:'power3.out'},0.34);
+  tl.fromTo('#s7-cta',{opacity:0,y:18,scale:.96},{opacity:1,y:0,scale:1,duration:.4,ease:'back.out(1.5)'},0.2);
+  tl.fromTo('#s7-asin',{opacity:0},{opacity:1,duration:.26,ease:'power2.out'},0.12);
+  tl.fromTo('#s7-note',{opacity:0},{opacity:1,duration:.26,ease:'power2.out'},0.16);
+
+  /* hold : plus rien ne bouge, le dernier frame est un poster fini */
+  tl.to('#s7-book',{rotateY:-5,duration:.6,ease:'sine.inOut'},0.7);
+
+  window.__timelines['s7'] = tl;
+})();
+</script>
+</template>

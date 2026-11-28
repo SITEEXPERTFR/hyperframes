@@ -1,0 +1,137 @@
+<template>
+<link rel="stylesheet" href="../assets/book.css" />
+<style>
+  #root{position:absolute;inset:0}
+
+  /* ---------- le livre, objet imprimé ---------- */
+  #s1-book{position:absolute;left:1006px;top:178px;width:540px;height:712px;transform-style:preserve-3d}
+  #s1-board{position:absolute;inset:0;border-radius:6px 14px 14px 6px;
+    background:linear-gradient(102deg,#1f6b45 0%,#257e51 44%,#1a5c3b 100%);
+    box-shadow:0 64px 120px rgba(18,18,17,.26),0 10px 28px rgba(18,18,17,.16),inset 0 0 0 1px rgba(255,255,255,.10)}
+  #s1-board::after{content:"";position:absolute;left:0;top:0;bottom:0;width:18px;border-radius:6px 0 0 6px;
+    background:linear-gradient(90deg,rgba(0,0,0,.30),rgba(255,255,255,.07))}
+  #s1-art{position:absolute;inset:0;border-radius:6px 14px 14px 6px;overflow:hidden;background:#fffdf8}
+  #s1-pages{position:absolute;right:-9px;top:8px;bottom:8px;width:16px;border-radius:0 9px 9px 0;
+    background:repeating-linear-gradient(180deg,#fffdf8 0 2px,#e6e3da 2px 3px);box-shadow:2px 0 8px rgba(18,18,17,.12)}
+
+  #s1-in{position:absolute;inset:0;padding:34px 32px 28px;display:flex;flex-direction:column}
+  #s1-band{width:98px;height:12px;border-radius:999px;background:#1f6b45}
+  #s1-kick{font-size:28px;font-weight:600;letter-spacing:.02em;text-transform:uppercase;color:#1f6b45;margin-top:20px}
+  #s1-name{font-size:58px;line-height:.92;font-weight:800;letter-spacing:-.048em;margin-top:12px}
+  #s1-name em{font-style:normal;color:#1f6b45}
+  #s1-sub{font-size:28px;line-height:1.08;font-weight:800;letter-spacing:-.03em;text-transform:uppercase;margin-top:18px}
+
+  /* illustration : deux enfants + une pièce */
+  #s1-illu{position:relative;margin-top:auto;height:214px;margin-bottom:54px}
+  .kid{position:absolute;bottom:0;width:126px;height:212px}
+  .kid .body{position:absolute;left:50%;bottom:0;width:112px;height:128px;margin-left:-56px;border-radius:66px 66px 16px 16px}
+  .kid .head{position:absolute;left:50%;bottom:112px;width:84px;height:84px;margin-left:-42px;border-radius:50%;
+    background:#f7cbaa;box-shadow:inset -9px -10px 0 rgba(18,18,17,.05)}
+  .kid .hair{position:absolute;left:50%;bottom:158px;width:92px;height:50px;margin-left:-46px;border-radius:54px 54px 14px 14px}
+  #kid-leo{left:78px}
+  #kid-leo .hair{background:#4a3a2c}
+  #kid-leo .hair::after{content:"";position:absolute;left:-6px;top:26px;width:26px;height:44px;border-radius:14px;background:#4a3a2c}
+  #kid-leo .body{background:#1f6b45}
+  #kid-lea{left:224px}
+  #kid-lea .hair{background:#2f2a26}
+  #kid-lea .hair::after{content:"";position:absolute;right:-8px;top:24px;width:30px;height:92px;border-radius:16px;background:#2f2a26}
+  #kid-lea .body{background:#ffbe0c}
+  #s1-coin{position:absolute;left:170px;top:2px;width:78px;height:78px;font-size:36px}
+
+  #s1-author{position:absolute;left:34px;bottom:30px;font-size:28px;font-weight:600;color:#575752;letter-spacing:-.01em}
+
+  /* ---------- colonne éditoriale ---------- */
+  #s1-copy{position:absolute;left:132px;top:238px;width:840px}
+  #s1-eyebrow{font-size:28px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#575752}
+  #s1-title{margin-top:24px;font-size:106px;white-space:nowrap;line-height:.94;font-weight:800;letter-spacing:-.045em}
+  #s1-title .ln{display:block;overflow:hidden;padding-bottom:8px}
+  #s1-title .w{display:inline-block}
+  #s1-title .em{color:#1f6b45}
+  #s1-rule{height:1px;background:#ecebe6;width:740px;margin-top:30px}
+  #s1-facts{display:flex;gap:64px;margin-top:28px}
+  #s1-facts .v{font-size:56px;font-weight:800;letter-spacing:-.045em;line-height:1;font-variant-numeric:tabular-nums}
+  #s1-facts .f:first-child .v{color:#1f6b45}
+  #s1-facts .k{font-size:29px;font-weight:600;color:#575752;margin-top:8px}
+
+  /* marques de sélection MAXENCE TISON (2 max, sur les bords de la couverture) */
+  .selCorner{position:absolute;width:16px;height:16px;background:#00a0fe;box-shadow:0 0 0 3px rgba(0,160,254,.18);z-index:6}
+  #s1-c1{left:-22px;top:-22px}#s1-c2{right:-22px;bottom:-22px}
+</style>
+
+<div id="root" data-composition-id="s1" data-width="1920" data-height="1080">
+  <div class="book-scene">
+    <div class="ground" data-layout-ignore="true"></div>
+    <div class="grain" data-layout-ignore="true"></div>
+
+    <!-- LIVRE -->
+    <div id="s1-clip-book" class="clip" data-start="0" data-duration="2.6" data-track-index="1" data-layout-allow-overflow>
+      <div class="stage">
+        <div id="s1-book">
+          <div id="s1-board"></div>
+          <div id="s1-art">
+            <div id="s1-in">
+              <div id="s1-band"></div>
+              <div id="s1-kick">Éducation financière</div>
+              <div id="s1-name">Léo <em>et</em> Léa</div>
+              <div id="s1-sub">Mon argent,<br>mes choix,<br>mon avenir</div>
+              <div id="s1-illu">
+                <div id="kid-leo" class="kid"><div class="hair"></div><div class="head"></div><div class="body"></div></div>
+                <div id="kid-lea" class="kid"><div class="hair"></div><div class="head"></div><div class="body"></div></div>
+                <div id="s1-coin" class="coin">€</div>
+              </div>
+              <div id="s1-author">Andréa E. AMOS</div>
+            </div>
+          </div>
+          <div id="s1-pages"></div>
+          <span id="s1-c1" class="selCorner"></span>
+          <span id="s1-c2" class="selCorner"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLONNE TEXTE -->
+    <div id="s1-clip-copy" class="clip" data-start="0" data-duration="2.6" data-track-index="2" data-layout-allow-overlap>
+      <div class="stage">
+        <div id="s1-copy">
+          <div id="s1-eyebrow">Livre illustré · 8–12 ans</div>
+          <div id="s1-title">
+            <span class="ln"><span class="w">MON</span> <span class="w">ARGENT.</span></span>
+            <span class="ln"><span class="w">MES</span> <span class="w">CHOIX.</span></span>
+            <span class="ln"><span class="w em">MON</span> <span class="w em">AVENIR.</span></span>
+          </div>
+          <div id="s1-rule"></div>
+          <div id="s1-facts">
+            <div class="f"><div class="v">10</div><div class="k">histoires</div></div>
+            <div class="f"><div class="v">67</div><div class="k">pages</div></div>
+            <div class="f"><div class="v">8–12</div><div class="k">ans</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var tl = gsap.timeline({ paused:true });
+  var words = Array.prototype.slice.call(document.querySelectorAll('#s1-title .w'));
+
+  /* frame 0 : tout est déjà lisible (miniature sociale) */
+  tl.set('#s1-book',{rotateY:-15,rotateX:7,transformPerspective:2400,transformOrigin:'50% 50%'},0);
+  tl.fromTo('#s1-book',{x:130,y:48,scale:.93},{x:0,y:0,scale:1,duration:.78,ease:'power4.out'},0);
+  tl.fromTo('#s1-book',{rotateY:-15,rotateX:7},{rotateY:-7,rotateX:2.5,duration:.9,ease:'power3.out'},0);
+  tl.fromTo(words,{opacity:.26},{opacity:1,duration:.24,stagger:.055,ease:'power2.out'},0.05);
+  tl.fromTo('#s1-coin',{scale:.55,rotate:-28},{scale:1,rotate:0,duration:.6,ease:'back.out(1.7)'},0.3);
+  tl.fromTo('#kid-leo',{y:20,opacity:.25},{y:0,opacity:1,duration:.5,ease:'power3.out'},0.16);
+  tl.fromTo('#kid-lea',{y:20,opacity:.25},{y:0,opacity:1,duration:.5,ease:'power3.out'},0.24);
+  tl.fromTo('#s1-c1,#s1-c2',{opacity:0,scale:.4},{opacity:1,scale:1,duration:.28,ease:'power3.out'},0.62);
+
+  /* respiration tenue puis sortie (45 % de l'entrée) */
+  tl.to('#s1-book',{rotateY:-2.5,rotateX:1,duration:1.1,ease:'sine.inOut'},1.1);
+  tl.to('#s1-copy',{opacity:0,y:-24,duration:.26,ease:'power3.in'},2.18);
+  tl.to('#s1-book',{x:-300,opacity:0,duration:.28,ease:'power3.in'},2.2);
+
+  window.__timelines['s1'] = tl;
+})();
+</script>
+</template>
