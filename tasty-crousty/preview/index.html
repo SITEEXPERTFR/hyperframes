@@ -52,7 +52,7 @@
 <div class="wrap">
   <header id="kairo">
     <h1><span>KAIRO.</span> — HyperFrames</h1>
-    <div class="sub">Kairo 20 s + Pixel Pop! 6 s · 60 fps · 1920×1080 · HyperFrames officiel</div>
+    <div class="sub">Kairo 20 s + Pixel Pop! 6 s + Léo et Léa 20 s · 60 fps · 1920×1080 · HyperFrames officiel</div>
   </header>
   <div class="kairo-note"><strong>KAIRO est maintenant la vidéo chargée par défaut dans le preview.</strong> Si ton navigateur affiche encore l’ancien spot, recharge la page. Accès direct : <a href="/download">page de téléchargement (avec lien GitHub de secours)</a> · <a href="/download/kairo.mp4">MP4 1080p60</a> · <a href="/download/kairo-720p.mp4">MP4 720p léger</a> · <a href="/kairo">lecteur Kairo seul</a>.</div>
 
@@ -67,6 +67,8 @@
     <button data-src="/kairo-hyperframes-720p.mp4?v=kairo-1">Kairo 720p · 1,4 Mo</button>
     <button data-src="/pixel-pop-hyperframes.mp4?v=pp-1">Pixel Pop! 6 s · 3,2 Mo</button>
     <button data-src="/pixel-pop-hyperframes-720p.mp4?v=pp-1">Pixel Pop! 720p · 0,8 Mo</button>
+    <button data-src="/leo-lea-hyperframes.mp4?v=ll-1">Léo et Léa 20 s · 4,5 Mo</button>
+    <button data-src="/leo-lea-hyperframes-720p.mp4?v=ll-1">Léo et Léa 720p · 1,6 Mo</button>
     <button id="son" class="son">🔊 Activer le son</button>
     <a id="dl" class="chip" href="/download/kairo.mp4" download>⬇ Télécharger Kairo</a>
     <a class="chip" href="/download/kairo-720p.mp4" download>⬇ Kairo 720p</a>
@@ -82,6 +84,9 @@
   </div>
   <p class="hint">Le navigateur coupe le son au démarrage : clique sur « Activer le son ». Si la lecture ne part pas, clique sur ▶ dans le lecteur.</p>
   <div class="err" id="err">Le lecteur n'a pas pu charger la vidéo. <a id="errlink" href="/tasty-crousty-mini.mp4">Ouvre la version mini directement</a> ou télécharge le fichier ci-dessus.</div>
+
+  <h2>STORYBOARD LÉO ET LÉA — 20 INSTANTS</h2>
+  <img src="/tasty-crousty/stills/leo-lea/contact-sheet.jpg?v=ll-1" alt="Storyboard Léo et Léa" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.12)">
 
   <h2>STORYBOARD PIXEL POP! — 12 INSTANTS</h2>
   <img src="/tasty-crousty/stills/pixel-pop/contact-sheet.jpg?v=pp-1" alt="Storyboard Pixel Pop" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.12)">
@@ -100,6 +105,10 @@
     <a class="chip" href="/pixel-pop">▶ Lecteur Pixel Pop! seul</a>
     <a class="chip" href="/download/pixel-pop.mp4" download>Pixel Pop! 1080p60 (3,2 Mo)</a>
     <a class="chip" href="/download/pixel-pop-720p.mp4" download>Pixel Pop! 720p (0,8 Mo)</a>
+    <a class="chip" href="/leo-lea">▶ Lecteur Léo et Léa seul</a>
+    <a class="chip" href="/download/leo-lea.mp4" download>Léo et Léa 1080p60 (4,5 Mo)</a>
+    <a class="chip" href="/download/leo-lea-720p.mp4" download>Léo et Léa 720p (1,6 Mo)</a>
+    <a class="chip" href="/leo-lea-hyperframes/README.md" target="_blank">Projet Léo et Léa (README)</a>
     <a class="chip" href="/pixel-pop-hyperframes/README.md" target="_blank">Projet Pixel Pop! (README)</a>
     <a class="chip" href="/pixel-pop-hyperframes/assets/real/ASSETS.md" target="_blank">Provenance des assets</a>
     <a class="chip" href="/download">⬇ Page de téléchargement Kairo</a>
@@ -160,12 +169,22 @@
   buttons.forEach(b => b.addEventListener('click', () => {
     const at = v.currentTime, playing = !v.paused, muted = v.muted;
     v.src = b.dataset.src;
-    v.poster = b.dataset.src.indexOf('kairo') >= 0 ? '/tasty-crousty/stills/kairo/poster.png?v=kairo-1' : '/tasty-crousty/stills/hyperframes-v2/poster.png';
+    v.poster = b.dataset.src.indexOf('kairo') >= 0 ? '/tasty-crousty/stills/kairo/poster.png?v=kairo-1'
+             : b.dataset.src.indexOf('pixel-pop') >= 0 ? '/tasty-crousty/stills/pixel-pop/poster.png?v=pp-1'
+             : b.dataset.src.indexOf('leo-lea') >= 0 ? '/tasty-crousty/stills/leo-lea/poster.png?v=ll-1'
+             : '/tasty-crousty/stills/hyperframes-v2/poster.png';
     const src = b.dataset.src;
     dl.href = src.indexOf('kairo-hyperframes-720p') >= 0 ? '/download/kairo-720p.mp4'
             : src.indexOf('kairo-hyperframes') >= 0 ? '/download/kairo.mp4'
+            : src.indexOf('pixel-pop-hyperframes-720p') >= 0 ? '/download/pixel-pop-720p.mp4'
+            : src.indexOf('pixel-pop-hyperframes') >= 0 ? '/download/pixel-pop.mp4'
+            : src.indexOf('leo-lea-hyperframes-720p') >= 0 ? '/download/leo-lea-720p.mp4'
+            : src.indexOf('leo-lea-hyperframes') >= 0 ? '/download/leo-lea.mp4'
             : src.split('?')[0];
-    dl.textContent = b.dataset.src.indexOf('kairo') >= 0 ? '⬇ Télécharger Kairo' : '⬇ Télécharger';
+    dl.textContent = b.dataset.src.indexOf('kairo') >= 0 ? '⬇ Télécharger Kairo'
+                   : b.dataset.src.indexOf('pixel-pop') >= 0 ? '⬇ Télécharger Pixel Pop!'
+                   : b.dataset.src.indexOf('leo-lea') >= 0 ? '⬇ Télécharger Léo et Léa'
+                   : '⬇ Télécharger';
     document.getElementById('errlink').href = '/tasty-crousty-mini.mp4';
     err.style.display = 'none';
     buttons.forEach(x => x.classList.toggle('active', x === b));

@@ -24,3 +24,11 @@ Si un lien ouvre la vidéo au lieu de la télécharger : clic droit → « Enreg
 - [Télécharger le MP4 1080p60 via GitHub](https://github.com/SITEEXPERTFR/hyperframes/raw/refs/heads/arena/9dec692a-hyperframes/pixel-pop-hyperframes.mp4)
 - [Télécharger la version 720p via GitHub](https://github.com/SITEEXPERTFR/hyperframes/raw/refs/heads/arena/9dec692a-hyperframes/pixel-pop-hyperframes-720p.mp4)
 - Depuis le preview : `/download/pixel-pop.mp4`, `/download/pixel-pop-720p.mp4`, lecteur dédié `/pixel-pop`
+
+## Léo et Léa — spot produit 20 s
+- [Télécharger le MP4 1080p60 via GitHub](https://github.com/SITEEXPERTFR/hyperframes/raw/refs/heads/arena/9dec692a-hyperframes/leo-lea-hyperframes.mp4)
+- [Télécharger la version 720p via GitHub](https://github.com/SITEEXPERTFR/hyperframes/raw/refs/heads/arena/9dec692a-hyperframes/leo-lea-hyperframes-720p.mp4)
+- Depuis le preview : `/download/leo-lea.mp4`, `/download/leo-lea-720p.mp4`, lecteur dédié `/leo-lea`, storyboard `/tasty-crousty/stills/leo-lea/contact-sheet.jpg`
+- Taille : 4 626 192 octets · SHA-256 : `30c5d1dbb6a385b4455e55cf599d976bf7da3e782d729b2c10e2af7d989fd866`
+- 720p : 1 599 282 octets · SHA-256 : `068ef5fe1b4e05edff5057cce115558a25a707b6ac9fcb8fc0e772e932dc6571`
+- Source : [`leo-lea-hyperframes/`](leo-lea-hyperframes/) · `hyperframes check --json` : `ok:true`, 0 erreur, craft 0
